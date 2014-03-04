@@ -1,4 +1,4 @@
 Energy-Transformer
 ==================
 
-sevenno07
+Auteur principale / principal author: sevenno07
