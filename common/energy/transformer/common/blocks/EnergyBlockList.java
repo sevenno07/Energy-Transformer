@@ -11,9 +11,9 @@ public class EnergyBlockList
 	
 	public static void loadBlocks()
 	{
-		craftingLibrary = new CraftingLibrary().setBlockName("craftingLibrary").setBlockTextureName("energy_transformer:crafting_library");
-		pixelCondenser = new PixelCondenser().setBlockName("pixelCondenser").setBlockTextureName("energy_transformer:pixel_condenser");
-		fabricator = new Fabricator().setBlockName("fabricator").setBlockTextureName("energy_transformer:fabricator");
+		craftingLibrary = new CraftingLibrary();
+		pixelCondenser = new PixelCondenser();
+		fabricator = new Fabricator();
 		
 		GameRegistry.registerBlock(craftingLibrary, "crafting_library");
 		GameRegistry.registerBlock(pixelCondenser, "pixel_condenser");

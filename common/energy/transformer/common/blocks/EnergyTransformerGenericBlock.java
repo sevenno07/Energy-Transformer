@@ -9,7 +9,7 @@ public class EnergyTransformerGenericBlock extends Block {
 	protected EnergyTransformerGenericBlock(Material material, String blockName, String textureName) {
 		super(material);
 		this.setBlockName(blockName);
-		this.setBlockTextureName(EnergyTransformer.MODID + ":" + textureName);
+		this.setBlockTextureName(EnergyTransformer.MODID.toLowerCase() + ":" + textureName);
 	}
 
 }
