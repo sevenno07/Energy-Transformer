@@ -10,9 +10,10 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import energy.transformer.common.blocks.EnergyBlockList;
 import energy.transformer.proxy.EnergyCommonProxy;
 
-@Mod(modid = "Energy_Transformer", name = "Energy-Transformer", version = "@VERSION@")
+@Mod(modid = EnergyTransformer.MODID, name = "Energy-Transformer", version = "@VERSION@")
 public class EnergyTransformer
 {
+	public static final String MODID = "Energy-Transformer";
 	@SidedProxy(clientSide = "energy.transformer.proxy.EnergyClientProxy", serverSide = "energy.transformer.proxy.EnergyCommonProxy")
 	public static EnergyCommonProxy proxy;
 	
