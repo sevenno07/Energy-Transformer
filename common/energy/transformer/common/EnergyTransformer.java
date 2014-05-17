@@ -13,7 +13,7 @@ import energy.transformer.proxy.EnergyCommonProxy;
 @Mod(modid = EnergyTransformer.MODID, name = "Energy-Transformer", version = "@VERSION@")
 public class EnergyTransformer
 {
-	public static final String MODID = "Energy-Transformer";
+	public static final String MODID = "Energy_Transformer";
 	@SidedProxy(clientSide = "energy.transformer.proxy.EnergyClientProxy", serverSide = "energy.transformer.proxy.EnergyCommonProxy")
 	public static EnergyCommonProxy proxy;
 	
