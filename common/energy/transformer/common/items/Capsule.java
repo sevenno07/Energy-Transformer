@@ -83,5 +83,6 @@ public class Capsule extends EnergyTransformerGenericItem {
 	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
 	    stack.stackTagCompound = new NBTTagCompound();
 	    stack.stackTagCompound.setInteger("currentEPC", 0);
+	    stack.stackTagCompound.setInteger("maximumEPC", getMaximumEPCFromStack(stack));
 	}
 }
