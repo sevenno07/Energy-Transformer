@@ -12,6 +12,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.StringUtils;
+import net.minecraft.world.World;
 
 public class Capsule extends EnergyTransformerGenericItem {
 	private String[] type = new String[] { "epcCapsule1k", "epcCapsule2k",
@@ -30,6 +31,7 @@ public class Capsule extends EnergyTransformerGenericItem {
 		super(itemName, textureName);
 		this.setHasSubtypes(true);
 		System.out.println(this.getMaximumEPC(99));
+		this.maxStackSize = 1;
 	}
 
 	public int getMetadata(int metadata) {
@@ -54,14 +56,32 @@ public class Capsule extends EnergyTransformerGenericItem {
 		return super.getUnlocalizedName() + "." + type[metadata];
 	}
 
+	/**
+	 * Get the maximum amount of EPC from a metadata
+	 * @param metadata
+	 * @return The maximum amount of EPC that can be stored in the capsule
+	 */
 	public int getMaximumEPC(int metadata) {
 		return epc[metadata];
+	}
+	/**
+	 * Get the maximum amount of EPC from an item stack
+	 * @param stack
+	 * @return The maximum amount of EPC that can be stored in the capsule
+	 */
+	public int getMaximumEPCFromStack(ItemStack stack) {
+		return epc[stack.getItemDamage()];
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list,
 			boolean par4) {
 		list.add(StatCollector.translateToLocal("energytransformer.maximumEPC")
-				+ " : " + epc[stack.getItemDamage()]);
+				+ " : " + getMaximumEPCFromStack(stack));
+	}
+	
+	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
+	    stack.stackTagCompound = new NBTTagCompound();
+	    stack.stackTagCompound.setInteger("currentEPC", 0);
 	}
 }
