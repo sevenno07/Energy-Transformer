@@ -4,6 +4,7 @@ import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import energy.transformer.common.EnergyTransformer;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -42,7 +43,7 @@ public class Capsule extends EnergyTransformerGenericItem
 		IconArray = new IIcon[type.length];
 		for(int i = 0; i < type.length; i++)
 		{
-			IconArray[i] = iconregister.registerIcon("modtutoriel:" + type[i]);
+			IconArray[i] = iconregister.registerIcon(EnergyTransformer.MODID + ":" + type[i]);
 
 		}
 
