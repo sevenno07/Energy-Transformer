@@ -9,6 +9,6 @@ public class EnergyItemList
 	
 	public static void loadItems()
 	{
-		
+		capsule = new Capsule("epcCapsule", null);
 	}
 }
