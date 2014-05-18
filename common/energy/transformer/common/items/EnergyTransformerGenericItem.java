@@ -9,4 +9,8 @@ public class EnergyTransformerGenericItem extends Item {
 		this.setTextureName(textureName);
 	}
 
+	public EnergyTransformerGenericItem() {
+		super();
+	}
+
 }

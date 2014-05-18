@@ -30,8 +30,8 @@ public class Capsule extends EnergyTransformerGenericItem {
 	private static final String NAME_NBT_MAX_EPC = "maximumEPC";
 	private static final String NAME_NBT_CURRENT_EPC = "currentEPC";
 
-	protected Capsule(String itemName, String textureName) {
-		super(itemName, textureName);
+	protected Capsule() {
+		super();
 		this.setHasSubtypes(true);
 		this.maxStackSize = 1;
 	}
