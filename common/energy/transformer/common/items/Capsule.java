@@ -5,6 +5,7 @@ import java.util.List;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -26,11 +27,12 @@ public class Capsule extends EnergyTransformerGenericItem {
 			20000000, 50000000, 100000000 };
 
 	private IIcon[] IconArray;
+	private static final String NAME_NBT_MAX_EPC = "maximumEPC";
+	private static final String NAME_NBT_CURRENT_EPC = "currentEPC";
 
 	protected Capsule(String itemName, String textureName) {
 		super(itemName, textureName);
 		this.setHasSubtypes(true);
-		System.out.println(this.getMaximumEPC(99));
 		this.maxStackSize = 1;
 	}
 
@@ -38,10 +40,9 @@ public class Capsule extends EnergyTransformerGenericItem {
 		return metadata;
 	}
 
-	public void registerIcons(IIconRegister iconregister){
+	public void registerIcons(IIconRegister iconregister) {
 		IconArray = new IIcon[type.length];
-		for (int i = 0; i < type.length; i++)
-		{
+		for (int i = 0; i < type.length; i++) {
 			IconArray[i] = iconregister.registerIcon("modtutoriel:" + type[i]);
 
 		}
@@ -56,21 +57,58 @@ public class Capsule extends EnergyTransformerGenericItem {
 		return super.getUnlocalizedName() + "." + type[metadata];
 	}
 
+
+
+	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
+		stack.stackTagCompound = new NBTTagCompound();
+		stack.stackTagCompound.setInteger(NAME_NBT_CURRENT_EPC, 0);
+		stack.stackTagCompound.setInteger(NAME_NBT_MAX_EPC, getMaximumEPCFromStack(stack));
+	}
+
+	public void onUpdate(ItemStack stack, World world, Entity entity, int par4int, boolean par5boolean) {
+		if (stack.stackTagCompound != null){
+			if (getNBTCurrentEPC(stack) > getNBTCurrentEPC(stack)){
+				stack.stackTagCompound.setInteger(NAME_NBT_CURRENT_EPC, getNBTMaximumEPC(stack));
+			}
+		}
+	}
+	
 	/**
 	 * Get the maximum amount of EPC from a metadata
+	 * 
 	 * @param metadata
 	 * @return The maximum amount of EPC that can be stored in the capsule
 	 */
 	public int getMaximumEPC(int metadata) {
 		return epc[metadata];
 	}
+
+	/**
+	 * Gets the maximum epc from NBT
+	 * 
+	 * @param metadata
+	 */
+	public int getNBTMaximumEPC(ItemStack stack) {
+		return stack.stackTagCompound.getInteger(NAME_NBT_MAX_EPC);
+	}
+
 	/**
 	 * Get the maximum amount of EPC from an item stack
+	 * 
 	 * @param stack
 	 * @return The maximum amount of EPC that can be stored in the capsule
 	 */
 	public int getMaximumEPCFromStack(ItemStack stack) {
 		return epc[stack.getItemDamage()];
+	}
+	
+	/**
+	 * Gets the current epc from NBT
+	 * 
+	 * @param metadata
+	 */
+	public int getNBTCurrentEPC(ItemStack stack) {
+		return stack.stackTagCompound.getInteger(NAME_NBT_CURRENT_EPC);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -78,11 +116,5 @@ public class Capsule extends EnergyTransformerGenericItem {
 			boolean par4) {
 		list.add(StatCollector.translateToLocal("energytransformer.maximumEPC")
 				+ " : " + getMaximumEPCFromStack(stack));
-	}
-	
-	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
-	    stack.stackTagCompound = new NBTTagCompound();
-	    stack.stackTagCompound.setInteger("currentEPC", 0);
-	    stack.stackTagCompound.setInteger("maximumEPC", getMaximumEPCFromStack(stack));
 	}
 }
