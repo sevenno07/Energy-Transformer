@@ -6,6 +6,11 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+/**
+ * Class for the EPC values and the game mechanics using EPC
+ * 
+ * @author utybo
+ */
 public class EPCDatabase
 {
 	private static HashMap epcDatabase;
@@ -66,6 +71,7 @@ public class EPCDatabase
 
 	/**
 	 * Gets the EPC value from an item and its metadata
+	 * 
 	 * @param item
 	 * @param metadata
 	 * @return EPC of the item or 0 if unknown item
@@ -85,6 +91,7 @@ public class EPCDatabase
 
 	/**
 	 * Gets the EPC value from a block and and its metadata
+	 * 
 	 * @param block
 	 * @param metadata
 	 * @return EPC of the item or 0 if unknown item

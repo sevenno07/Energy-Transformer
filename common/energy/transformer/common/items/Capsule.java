@@ -16,10 +16,20 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.util.StringUtils;
 import net.minecraft.world.World;
 
+/**
+ * Capsule class. Does not allow the creation of custom capsules though.
+ * 
+ * @author utybo
+ * 
+ */
 public class Capsule extends EnergyTransformerGenericItem
 {
 	private String[] type = new String[] {"epcCapsule1k", "epcCapsule2k", "epcCapsule5k", "epcCapsule10k", "epcCapsule20k", "epcCapsule50k", "epcCapsule100k", "epcCapsule200k", "epcCapsule500k", "epcCapsule1m", "epcCapsule2m", "epcCapsule5m", "epcCapsule10m", "epcCapsule20m", "epcCapsule50m", "epcCapsule100m"};
 
+	/**
+	 * The amount of epc that can be held by the capsule. Relative to the
+	 * metadata of the capsule item
+	 */
 	private int[] epc = new int[] {1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000, 500000, 1000000, 2000000, 5000000, 10000000, 20000000, 50000000, 100000000};
 
 	private IIcon[] IconArray;
@@ -78,14 +88,23 @@ public class Capsule extends EnergyTransformerGenericItem
 	}
 
 	/**
-	 * Get the maximum amount of EPC from a metadata
+	 * Get the maximum amount of EPC from a metadata.
 	 * 
 	 * @param metadata
-	 * @return The maximum amount of EPC that can be stored in the capsule
+	 * @return The maximum amount of EPC that can be stored in the capsule or 0
+	 *         if unknown metadata
 	 */
 	public int getMaximumEPC(int metadata)
 	{
-		return epc[metadata];
+		if(metadata > epc.length)
+		{
+			return epc[metadata];
+		}
+		else
+		{
+			return 0;
+		}
+
 	}
 
 	/**
@@ -99,7 +118,7 @@ public class Capsule extends EnergyTransformerGenericItem
 	}
 
 	/**
-	 * Get the maximum amount of EPC from an item stack
+	 * Gets the maximum amount of EPC from an item stack
 	 * 
 	 * @param stack
 	 * @return The maximum amount of EPC that can be stored in the capsule
@@ -110,7 +129,7 @@ public class Capsule extends EnergyTransformerGenericItem
 	}
 
 	/**
-	 * Gets the current epc from NBT
+	 * Gets the current amount of EPC from NBT
 	 * 
 	 * @param metadata
 	 */
@@ -122,6 +141,8 @@ public class Capsule extends EnergyTransformerGenericItem
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
 	{
-		list.add(StatCollector.translateToLocal("energytransformer.maximumEPC") + " : " + getMaximumEPCFromStack(stack));
+		// Example of output : Current EPC : ??? EPC out of ??? EPC
+		list.clear();
+		list.add(EnumChatFormatting.RESET + "" + EnumChatFormatting.GRAY + StatCollector.translateToLocal("energytransformer.currentEPC") + " : " + EnumChatFormatting.WHITE + getNBTCurrentEPC(stack) + " " + StatCollector.translateToLocal("energytransformer.EPC") + EnumChatFormatting.GRAY + StatCollector.translateToLocal("energytransformer.outOfEPC") + " " + EnumChatFormatting.WHITE + getMaximumEPCFromStack(stack) + StatCollector.translateToLocal("energytransformer.maximumEPC") + EnumChatFormatting.RESET);
 	}
 }

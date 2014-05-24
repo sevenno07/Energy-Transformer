@@ -12,11 +12,27 @@ import energy.transformer.common.blocks.EnergyBlockList;
 import energy.transformer.common.items.EnergyItemList;
 import energy.transformer.proxy.EnergyCommonProxy;
 
+/**
+ * Main class of the mod Energy Transformer
+ * 
+ * @author Superloup10, sevenno07, utybo
+ * 
+ */
 @Mod(modid = EnergyTransformer.MODID, name = "Energy-Transformer", version = "@VERSION@")
 public class EnergyTransformer
 {
+	/**
+	 * Energy Transformer's Logger (log4j)
+	 */
 	public static final Logger LOGGER = LogManager.getLogger("Energy-Transformer");
+
+	/**
+	 * The modid of Energy Transformer
+	 */
 	public static final String MODID = "Energy_Transformer";
+	/**
+	 * Proxy
+	 */
 	@SidedProxy(clientSide = "energy.transformer.proxy.EnergyClientProxy", serverSide = "energy.transformer.proxy.EnergyCommonProxy")
 	public static EnergyCommonProxy proxy;
 
