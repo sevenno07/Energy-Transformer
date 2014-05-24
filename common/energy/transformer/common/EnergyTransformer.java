@@ -9,6 +9,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import energy.transformer.common.blocks.EnergyBlockList;
+import energy.transformer.common.epc.EnergyEPCValuesList;
 import energy.transformer.common.items.EnergyItemList;
 import energy.transformer.proxy.EnergyCommonProxy;
 
@@ -57,6 +58,7 @@ public class EnergyTransformer
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
-
+		LOGGER.info("Loading EPC values");
+		EnergyEPCValuesList.loadEPCValues();
 	}
 }
