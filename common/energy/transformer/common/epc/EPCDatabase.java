@@ -16,7 +16,7 @@ public class EPCDatabase
 	private static HashMap epcDatabase;
 
 	/**
-	 * Sets the EPC value from an item stack
+	 * Sets the EPC value of an item stack
 	 * 
 	 * @param stack
 	 * @param epc
@@ -27,7 +27,7 @@ public class EPCDatabase
 	}
 
 	/**
-	 * Sets the EPC value from an item and its metadata
+	 * Sets the EPC value of an item and its metadata
 	 * 
 	 * @param item
 	 * @param epc
@@ -39,7 +39,18 @@ public class EPCDatabase
 	}
 
 	/**
-	 * Sets the EPC value from a block and its metadata
+	 * Sets the EPC value of an item
+	 * 
+	 * @param item
+	 * @param epc
+	 */
+	public static void setEPCValue(Item item, int epc)
+	{
+		epcDatabase.put(new ItemStack(item, 1, 0), epc);
+	}
+
+	/**
+	 * Sets the EPC value of a block and its metadata
 	 * 
 	 * @param block
 	 * @param epc
@@ -48,6 +59,17 @@ public class EPCDatabase
 	public static void setEPCValue(Block block, int epc, int metadata)
 	{
 		epcDatabase.put(new ItemStack(Item.getItemFromBlock(block), 1, metadata), epc);
+	}
+
+	/**
+	 * Sets the EPC value of a block
+	 * 
+	 * @param block
+	 * @param epc
+	 */
+	public static void setEPCValue(Block block, int epc)
+	{
+		epcDatabase.put(new ItemStack(Item.getItemFromBlock(block), 1, 0), epc);
 	}
 
 	/**
