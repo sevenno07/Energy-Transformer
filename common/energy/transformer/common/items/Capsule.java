@@ -73,16 +73,21 @@ public class Capsule extends EnergyTransformerGenericItem
 	{
 		stack.stackTagCompound = new NBTTagCompound();
 		stack.stackTagCompound.setInteger(NAME_NBT_CURRENT_EPC, 0);
-		stack.stackTagCompound.setInteger(NAME_NBT_MAX_EPC, getMaximumEPCFromStack(stack));
+		stack.stackTagCompound.setInteger(NAME_NBT_MAX_EPC, getMaximumEPC(stack));
 	}
 
 	public void onUpdate(ItemStack stack, World world, Entity entity, int par4int, boolean par5boolean)
 	{
 		if(stack.stackTagCompound != null)
 		{
-			if(getNBTCurrentEPC(stack) > getNBTCurrentEPC(stack))
+			//Make sure the current EPC amount is correct
+			if(getCurrentEPC(stack) > getCurrentEPC(stack))
 			{
-				stack.stackTagCompound.setInteger(NAME_NBT_CURRENT_EPC, getNBTMaximumEPC(stack));
+				stack.stackTagCompound.setInteger(NAME_NBT_CURRENT_EPC, this.getMaximumEPC(stack));
+			}
+			if(getCurrentEPC(stack) < 0)
+			{
+				stack.stackTagCompound.setInteger(NAME_NBT_CURRENT_EPC, 0);
 			}
 		}
 	}
@@ -107,15 +112,6 @@ public class Capsule extends EnergyTransformerGenericItem
 
 	}
 
-	/**
-	 * Gets the maximum epc from NBT
-	 * 
-	 * @param stack
-	 */
-	public int getNBTMaximumEPC(ItemStack stack)
-	{
-		return stack.stackTagCompound.getInteger(NAME_NBT_MAX_EPC);
-	}
 
 	/**
 	 * Gets the maximum amount of EPC from an item stack
@@ -123,7 +119,7 @@ public class Capsule extends EnergyTransformerGenericItem
 	 * @param stack
 	 * @return The maximum amount of EPC that can be stored in the capsule
 	 */
-	public int getMaximumEPCFromStack(ItemStack stack)
+	public int getMaximumEPC(ItemStack stack)
 	{
 		return epc[stack.getItemDamage()];
 	}
@@ -133,7 +129,7 @@ public class Capsule extends EnergyTransformerGenericItem
 	 * 
 	 * @param metadata
 	 */
-	public int getNBTCurrentEPC(ItemStack stack)
+	public int getCurrentEPC(ItemStack stack)
 	{
 		return stack.stackTagCompound.getInteger(NAME_NBT_CURRENT_EPC);
 	}
@@ -143,6 +139,6 @@ public class Capsule extends EnergyTransformerGenericItem
 	{
 		// Example of output : Current EPC : ??? EPC out of ??? EPC
 		list.clear();
-		list.add(EnumChatFormatting.RESET + "" + EnumChatFormatting.GRAY + StatCollector.translateToLocal("energytransformer.currentEPC") + " : " + EnumChatFormatting.WHITE + getNBTCurrentEPC(stack) + " " + StatCollector.translateToLocal("energytransformer.EPC") + EnumChatFormatting.GRAY + StatCollector.translateToLocal("energytransformer.outOfEPC") + " " + EnumChatFormatting.WHITE + getMaximumEPCFromStack(stack) + StatCollector.translateToLocal("energytransformer.maximumEPC") + EnumChatFormatting.RESET);
+		list.add(EnumChatFormatting.RESET + "" + EnumChatFormatting.GRAY + StatCollector.translateToLocal("energytransformer.currentEPC") + " : " + EnumChatFormatting.WHITE + getCurrentEPC(stack) + " " + StatCollector.translateToLocal("energytransformer.EPC") + EnumChatFormatting.GRAY + StatCollector.translateToLocal("energytransformer.outOfEPC") + " " + EnumChatFormatting.WHITE + getMaximumEPC(stack) + StatCollector.translateToLocal("energytransformer.maximumEPC") + EnumChatFormatting.RESET);
 	}
 }
