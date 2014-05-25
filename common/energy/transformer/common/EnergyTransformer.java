@@ -1,6 +1,8 @@
 package energy.transformer.common;
 
-import org.apache.logging.log4j.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -9,6 +11,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import energy.transformer.common.blocks.EnergyBlockList;
+import energy.transformer.common.creativetabs.EnergyCTList;
 import energy.transformer.common.epc.EnergyEPCValuesList;
 import energy.transformer.common.items.EnergyItemList;
 import energy.transformer.proxy.EnergyCommonProxy;
@@ -47,6 +50,8 @@ public class EnergyTransformer
 		EnergyBlockList.loadBlocks();
 		LOGGER.info("Loading items");
 		EnergyItemList.loadItems();
+		
+		EnergyCTList.loadCreativeTabs();
 	}
 
 	@EventHandler

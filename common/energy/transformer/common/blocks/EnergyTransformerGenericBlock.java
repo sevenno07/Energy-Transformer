@@ -1,12 +1,15 @@
 package energy.transformer.common.blocks;
 
-import energy.transformer.common.EnergyTransformer;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import energy.transformer.common.EnergyTransformer;
+
 /**
- * Generic block class. Any block class from Energy Transformer extends this class
+ * Generic block class. Any block class from Energy Transformer extends this
+ * class
+ * 
  * @author utybo
- *
+ * 
  */
 public class EnergyTransformerGenericBlock extends Block
 {
