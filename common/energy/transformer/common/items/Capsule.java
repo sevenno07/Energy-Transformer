@@ -21,7 +21,7 @@ import energy.transformer.common.EnergyTransformer;
  * @author utybo
  * 
  */
-public class Capsule extends EnergyTransformerGenericItem
+public class Capsule extends EnergyTransformerGenericItem implements IEPCStorage
 {
 	private String[] type = new String[] {"epcCapsule1k", "epcCapsule2k", "epcCapsule5k", "epcCapsule10k", "epcCapsule20k", "epcCapsule50k", "epcCapsule100k", "epcCapsule200k", "epcCapsule500k", "epcCapsule1m", "epcCapsule2m", "epcCapsule5m", "epcCapsule10m", "epcCapsule20m", "epcCapsule50m", "epcCapsule100m"};
 
@@ -68,6 +68,7 @@ public class Capsule extends EnergyTransformerGenericItem
 		return super.getUnlocalizedName() + "." + type[metadata];
 	}
 
+	@Override
 	public void onCreated(ItemStack stack, World world, EntityPlayer player)
 	{
 		stack.stackTagCompound = new NBTTagCompound();
@@ -75,11 +76,12 @@ public class Capsule extends EnergyTransformerGenericItem
 		stack.stackTagCompound.setInteger(NAME_NBT_MAX_EPC, getMaximumEPC(stack));
 	}
 
+	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int par4int, boolean par5boolean)
 	{
 		if(stack.stackTagCompound != null)
 		{
-			//Make sure the current EPC amount is correct
+			// Make sure the current EPC amount is correct
 			if(getCurrentEPC(stack) > getCurrentEPC(stack))
 			{
 				stack.stackTagCompound.setInteger(NAME_NBT_CURRENT_EPC, this.getMaximumEPC(stack));
@@ -91,13 +93,7 @@ public class Capsule extends EnergyTransformerGenericItem
 		}
 	}
 
-	/**
-	 * Get the maximum amount of EPC from a metadata.
-	 * 
-	 * @param metadata
-	 * @return The maximum amount of EPC that can be stored in the capsule or 0
-	 *         if unknown metadata
-	 */
+	@Override
 	public int getMaximumEPC(int metadata)
 	{
 		if(metadata > epc.length)
@@ -111,23 +107,13 @@ public class Capsule extends EnergyTransformerGenericItem
 
 	}
 
-
-	/**
-	 * Gets the maximum amount of EPC from an item stack
-	 * 
-	 * @param stack
-	 * @return The maximum amount of EPC that can be stored in the capsule
-	 */
+	@Override
 	public int getMaximumEPC(ItemStack stack)
 	{
 		return epc[stack.getItemDamage()];
 	}
 
-	/**
-	 * Gets the current amount of EPC from NBT
-	 * 
-	 * @param metadata
-	 */
+	@Override
 	public int getCurrentEPC(ItemStack stack)
 	{
 		return stack.stackTagCompound.getInteger(NAME_NBT_CURRENT_EPC);
@@ -136,8 +122,28 @@ public class Capsule extends EnergyTransformerGenericItem
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
 	{
-		// Example of output : Current EPC : ??? EPC out of ??? EPC
+		// Example :[ Current EPC : ??? EPC out of ??? EPC ] (will be displayed without [])
 		list.clear();
 		list.add(EnumChatFormatting.RESET + "" + EnumChatFormatting.GRAY + StatCollector.translateToLocal("energytransformer.currentEPC") + " : " + EnumChatFormatting.WHITE + getCurrentEPC(stack) + " " + StatCollector.translateToLocal("energytransformer.EPC") + EnumChatFormatting.GRAY + StatCollector.translateToLocal("energytransformer.outOfEPC") + " " + EnumChatFormatting.WHITE + getMaximumEPC(stack) + StatCollector.translateToLocal("energytransformer.maximumEPC") + EnumChatFormatting.RESET);
 	}
+
+	@Override
+	public boolean canAddEPC(ItemStack stack, int amountOfEPC)
+	{
+		return amountOfEPC + getCurrentEPC(stack) > getMaximumEPC(stack) ? true : false;
+	}
+
+	@Override
+	public void addToCurrentEPC(ItemStack stack, int amountOfEPC)
+	{
+		setCurrentEPC(stack, getCurrentEPC(stack) + amountOfEPC);
+	}
+
+	@Override
+	public void setCurrentEPC(ItemStack stack, int amountOfEPC)
+	{
+		stack.stackTagCompound.setInteger(NAME_NBT_CURRENT_EPC, amountOfEPC);
+
+	}
+
 }
