@@ -110,7 +110,7 @@ public class Capsule extends EnergyTransformerGenericItem
 	/**
 	 * Gets the maximum epc from NBT
 	 * 
-	 * @param metadata
+	 * @param stack
 	 */
 	public int getNBTMaximumEPC(ItemStack stack)
 	{
