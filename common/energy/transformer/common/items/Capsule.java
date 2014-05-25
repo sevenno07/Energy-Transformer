@@ -16,17 +16,18 @@ import cpw.mods.fml.relauncher.SideOnly;
 import energy.transformer.common.EnergyTransformer;
 
 /**
- * Capsule class. Does not allow the creation of custom capsules though.
+ * Capsule class. Does not allow the creation of custom capsules though.<br/>
  * 
+ * @see {@link IEPCStorage} (interface for the creation of custom capsules and
+ *      EPC storages)
  * @author utybo
- * 
  */
 public class Capsule extends EnergyTransformerGenericItem implements IEPCStorage
 {
 	private String[] type = new String[] {"epcCapsule1k", "epcCapsule2k", "epcCapsule5k", "epcCapsule10k", "epcCapsule20k", "epcCapsule50k", "epcCapsule100k", "epcCapsule200k", "epcCapsule500k", "epcCapsule1m", "epcCapsule2m", "epcCapsule5m", "epcCapsule10m", "epcCapsule20m", "epcCapsule50m", "epcCapsule100m"};
 
 	/**
-	 * The amount of epc that can be held by the capsule. Relative to the
+	 * The amount of EPC that can be stored in the capsule. Relative to the
 	 * metadata of the capsule item
 	 */
 	private int[] epc = new int[] {1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000, 500000, 1000000, 2000000, 5000000, 10000000, 20000000, 50000000, 100000000};
