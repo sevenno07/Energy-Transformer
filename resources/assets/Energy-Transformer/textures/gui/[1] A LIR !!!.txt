@@ -1,0 +1,3 @@
+Les zones rose, son les endrois ou il y a des changement, comme les nombre, ou la jauge de epc.
+Sinon, par exemple, si les capsules son plaine apré avoir converti, les trop de EPC va dans la jauge, et si on mais des capsule vide sens items a convertire alor que la jauge a des EPC, et que l'on appuis sure convertir, la jauge se vide dans les capsule.
+Quand on passe la sourit sur un item/bloc re-trensformable, le prix en EPC s'afiche dans une petite infobule ou un tuc du genre "en tenent conte de l'upgrade bien sure x)".

@@ -19,10 +19,11 @@ import energy.transformer.proxy.EnergyCommonProxy;
 /**
  * Main class of the mod Energy Transformer
  * 
- * @author Superloup10, sevenno07, utybo
+ * @author sevenno07 ]:), Superloup10, utybo
  * 
  */
 @Mod(modid = EnergyTransformer.MODID, name = "Energy-Transformer", version = "@VERSION@")
+//sevenno07: Dite moi svp pour quoi le mod ID a des majuscule svp :s, je croyai qu'il dever étre que en minuscule, je fais la remarque car en faite je créer le dossier resource pour les textures x).
 public class EnergyTransformer
 {
 	/**
