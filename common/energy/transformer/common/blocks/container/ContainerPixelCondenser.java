@@ -7,14 +7,16 @@ import energy.transformer.common.tileentity.TileEntityPixelCondenser;
 
 public class ContainerPixelCondenser extends Container
 {
+	private TileEntityPixelCondenser tileEntityPixelCondenser;
+	
 	public ContainerPixelCondenser(InventoryPlayer inventory, TileEntityPixelCondenser te)
 	{
-		
+		this.tileEntityPixelCondenser = te;
 	}
 
 	@Override
-	public boolean canInteractWith(EntityPlayer var1)
+	public boolean canInteractWith(EntityPlayer player)
 	{
-		return false;
+		return tileEntityPixelCondenser.isUseableByPlayer(player);
 	}
 }

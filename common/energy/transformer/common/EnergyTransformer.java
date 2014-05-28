@@ -10,10 +10,13 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import energy.transformer.common.blocks.EnergyBlockList;
 import energy.transformer.common.creativetabs.EnergyCTList;
 import energy.transformer.common.epc.EnergyEPCValuesList;
+import energy.transformer.common.gui.GuiHandler;
 import energy.transformer.common.items.EnergyItemList;
+import energy.transformer.common.tileentity.EnergyTEList;
 import energy.transformer.proxy.EnergyCommonProxy;
 
 /**
@@ -23,7 +26,6 @@ import energy.transformer.proxy.EnergyCommonProxy;
  * 
  */
 @Mod(modid = EnergyTransformer.MODID, name = "Energy-Transformer", version = "@VERSION@")
-//sevenno07: Dite moi svp pour quoi le mod ID a des majuscule svp :s, je croyai qu'il dever étre que en minuscule, je fais la remarque car en faite je créer le dossier resource pour les textures x).
 public class EnergyTransformer
 {
 	/**
@@ -47,18 +49,18 @@ public class EnergyTransformer
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
+		EnergyCTList.loadCreativeTabs();
 		LOGGER.info("Loading blocks");
 		EnergyBlockList.loadBlocks();
 		LOGGER.info("Loading items");
 		EnergyItemList.loadItems();
-		
-		EnergyCTList.loadCreativeTabs();
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-
+		EnergyTEList.loadTileEntity();
+		NetworkRegistry.INSTANCE.registerGuiHandler(this.instance, new GuiHandler());
 	}
 
 	@EventHandler

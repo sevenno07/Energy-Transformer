@@ -11,7 +11,7 @@ import energy.transformer.common.tileentity.TileEntityPixelCondenser;
 
 public class GuiPixelCondenser extends GuiContainer
 {
-	private static final ResourceLocation pixelCondenserGuiTexture = new ResourceLocation(EnergyTransformer.MODID.toLowerCase() + ":EnergyPixelCondenserGui");
+	private static final ResourceLocation pixelCondenserGuiTexture = new ResourceLocation(EnergyTransformer.MODID.toLowerCase() + ":textures/gui/EnergyPixelCondenserGui.png");
 	
 	private TileEntityPixelCondenser pixelCondenser;
 	
@@ -19,6 +19,8 @@ public class GuiPixelCondenser extends GuiContainer
 	{
 		super(new ContainerPixelCondenser(inventory, te));
 		this.pixelCondenser = te;
+		this.xSize = 200;
+		this.ySize = 250;
 	}
 
 	@Override
