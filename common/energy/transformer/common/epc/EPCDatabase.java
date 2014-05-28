@@ -13,7 +13,7 @@ import net.minecraft.item.ItemStack;
  */
 public class EPCDatabase
 {
-	private static HashMap epcDatabase;
+	private static HashMap epcDatabase = new HashMap();
 
 	/**
 	 * Sets the EPC value of an item stack
