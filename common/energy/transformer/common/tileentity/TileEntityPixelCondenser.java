@@ -14,6 +14,7 @@ public class TileEntityPixelCondenser extends TileEntity implements IEPCContaine
 {
 	private ItemStack[] inventory = new ItemStack[70];
 	private String customName;
+	private int storedEPC = 0;
 
 	@Override
 	public void readFromNBT(NBTTagCompound nbttag)
@@ -21,6 +22,8 @@ public class TileEntityPixelCondenser extends TileEntity implements IEPCContaine
 		super.readFromNBT(nbttag);
 		NBTTagList nbtTagList = nbttag.getTagList("Items", 10);
 		this.inventory = new ItemStack[this.getSizeInventory()];
+
+		this.storedEPC = nbttag.getInteger("StoredEPC");
 
 		if(nbttag.hasKey("CustomName"))
 		{
@@ -44,6 +47,8 @@ public class TileEntityPixelCondenser extends TileEntity implements IEPCContaine
 	{
 		super.writeToNBT(nbtTagCompound);
 		NBTTagList nbtTagList = new NBTTagList();
+
+		nbtTagCompound.setInteger("StoredEPC", storedEPC);
 
 		for(int i = 0; i < this.inventory.length; i++)
 		{
@@ -79,17 +84,19 @@ public class TileEntityPixelCondenser extends TileEntity implements IEPCContaine
 	@Override
 	public int getContainerEPC()
 	{
-		return 0;
+		return this.storedEPC;
 	}
 
 	@Override
 	public void setContainerEPC(int epc)
-	{}
+	{
+		this.storedEPC = epc;
+	}
 
 	@Override
 	public boolean hasEPC()
 	{
-		return false;
+		return this.storedEPC == 0;
 	}
 
 	@Override
@@ -157,12 +164,12 @@ public class TileEntityPixelCondenser extends TileEntity implements IEPCContaine
 	{
 		this.inventory[slot] = stack;
 
-        if (stack != null && stack.stackSize > this.getInventoryStackLimit())
-        {
-            stack.stackSize = this.getInventoryStackLimit();
-        }
+		if(stack != null && stack.stackSize > this.getInventoryStackLimit())
+		{
+			stack.stackSize = this.getInventoryStackLimit();
+		}
 
-        this.markDirty();
+		this.markDirty();
 	}
 
 	@Override
