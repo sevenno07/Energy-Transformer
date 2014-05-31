@@ -3,6 +3,7 @@ package energy.transformer.common;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -11,9 +12,11 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import energy.transformer.common.achievements.EnergyAchievementList;
 import energy.transformer.common.blocks.EnergyBlockList;
 import energy.transformer.common.creativetabs.EnergyCTList;
 import energy.transformer.common.epc.EnergyEPCValuesList;
+import energy.transformer.common.events.EnergyEventHandler;
 import energy.transformer.common.gui.GuiHandler;
 import energy.transformer.common.items.EnergyItemList;
 import energy.transformer.common.tileentity.EnergyTEList;
@@ -37,6 +40,7 @@ public class EnergyTransformer
 	 * The modid of Energy Transformer
 	 */
 	public static final String MODID = "Energy_Transformer";
+
 	/**
 	 * Proxy
 	 */
@@ -49,9 +53,12 @@ public class EnergyTransformer
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
+		LOGGER.info("Loading creative tabs");
 		EnergyCTList.loadCreativeTabs();
+
 		LOGGER.info("Loading blocks");
 		EnergyBlockList.loadBlocks();
+
 		LOGGER.info("Loading items");
 		EnergyItemList.loadItems();
 	}
@@ -59,8 +66,17 @@ public class EnergyTransformer
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
+		LOGGER.info("Registering Event Handler");
+		FMLCommonHandler.instance().bus().register(new EnergyEventHandler());
+
+		LOGGER.info("Loading tile entities");
 		EnergyTEList.loadTileEntity();
+
+		LOGGER.info("Registering GUI Handler");
 		NetworkRegistry.INSTANCE.registerGuiHandler(this.instance, new GuiHandler());
+
+		LOGGER.info("Loading achievement list");
+		EnergyAchievementList.load();
 	}
 
 	@EventHandler
