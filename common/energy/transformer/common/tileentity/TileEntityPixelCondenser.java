@@ -96,7 +96,7 @@ public class TileEntityPixelCondenser extends TileEntity implements IEPCContaine
 	@Override
 	public boolean hasEPC()
 	{
-		return this.storedEPC == 0;
+		return this.storedEPC != 0;
 	}
 
 	@Override
