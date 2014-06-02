@@ -1,10 +1,13 @@
 package energy.transformer.common.gui;
 
-import org.lwjgl.opengl.GL11;
-
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
+
+import org.lwjgl.opengl.GL11;
+
 import energy.transformer.common.EnergyTransformer;
 import energy.transformer.common.blocks.container.ContainerPixelCondenser;
 import energy.transformer.common.tileentity.TileEntityPixelCondenser;
@@ -12,15 +15,32 @@ import energy.transformer.common.tileentity.TileEntityPixelCondenser;
 public class GuiPixelCondenser extends GuiContainer
 {
 	private static final ResourceLocation pixelCondenserGuiTexture = new ResourceLocation(EnergyTransformer.MODID.toLowerCase() + ":textures/gui/EnergyPixelCondenserGui.png");
-	
+
 	private TileEntityPixelCondenser pixelCondenser;
+
+	private GuiButton convert;
 	
 	public GuiPixelCondenser(InventoryPlayer inventory, TileEntityPixelCondenser te)
 	{
 		super(new ContainerPixelCondenser(inventory, te));
 		this.pixelCondenser = te;
-		this.xSize = 200;
-		this.ySize = 250;
+		this.xSize = 195;
+		this.ySize = 256;
+	}
+	
+	@Override
+	public void initGui()
+	{
+		this.buttonList.clear();
+		this.buttonList.add(this.convert = new GuiButton(0, this.xSize + 158, this.ySize / 4 - 7, 67, 20, "Convert"));
+	}
+	
+
+	@Override
+	protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_)
+	{
+		this.fontRendererObj.drawString(this.pixelCondenser.hasCustomInventoryName() ? this.pixelCondenser.getInventoryName() : StatCollector.translateToLocal(this.pixelCondenser.getInventoryName()), 278, this.ySize - 207, 4210752);
+		this.fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 250, this.ySize - 54, 4210752);
 	}
 
 	@Override
