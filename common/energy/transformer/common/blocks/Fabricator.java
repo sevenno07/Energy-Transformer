@@ -6,6 +6,6 @@ public class Fabricator extends EnergyTransformerGenericBlock
 {
 	protected Fabricator()
 	{
-		super(Material.wood, "pixelCondenser", "pixel_condenser");
+		super(Material.wood, "fabricator", "fabricator");
 	}
 }
