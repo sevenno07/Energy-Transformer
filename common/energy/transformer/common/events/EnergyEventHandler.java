@@ -9,7 +9,7 @@ import energy.transformer.common.items.EnergyItemList;
 public class EnergyEventHandler
 {
 	@SubscribeEvent
-	public void onEntityJoin(ItemCraftedEvent event)
+	public void onCrafting(ItemCraftedEvent event)
 	{
 		if(event.crafting == new ItemStack(EnergyItemList.capsule, 1, 0))
 		{
