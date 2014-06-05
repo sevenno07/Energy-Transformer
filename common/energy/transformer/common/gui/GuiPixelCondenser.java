@@ -1,11 +1,13 @@
 package energy.transformer.common.gui;
 
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 import energy.transformer.common.EnergyTransformer;
@@ -19,7 +21,9 @@ public class GuiPixelCondenser extends GuiContainer
 	private TileEntityPixelCondenser pixelCondenser;
 
 	private GuiButton convert;
-	
+
+	private GuiTextField textField;
+
 	public GuiPixelCondenser(InventoryPlayer inventory, TileEntityPixelCondenser te)
 	{
 		super(new ContainerPixelCondenser(inventory, te));
@@ -27,20 +31,80 @@ public class GuiPixelCondenser extends GuiContainer
 		this.xSize = 195;
 		this.ySize = 256;
 	}
-	
+
 	@Override
 	public void initGui()
 	{
+		super.initGui();
+		int x = (this.width - this.xSize) / 2;
+		int y = (this.height - this.ySize) / 2;
+
+		Keyboard.enableRepeatEvents(true);
+
 		this.buttonList.clear();
-		this.buttonList.add(this.convert = new GuiButton(0, this.xSize + 158, this.ySize / 4 - 7, 67, 20, "Convert"));
+		this.buttonList.add(this.convert = new GuiButton(0, x + 110, y + 8, 67, 20, "Convert"));
+
+		this.textField = new GuiTextField(this.fontRendererObj, x - 237, y + 32, 81, 12);
+		this.textField.setMaxStringLength(120);
+		this.textField.setCanLoseFocus(false);
+		this.textField.setFocused(true);
 	}
-	
+
+	@Override
+	public void onGuiClosed()
+	{
+		super.onGuiClosed();
+		Keyboard.enableRepeatEvents(false);
+	}
+
+	@Override
+	protected void mouseClicked(int i, int j, int k)
+	{
+		super.mouseClicked(i, j, k);
+		int xMin = (this.width - this.xSize) / 2;
+		int yMin = (this.height - this.ySize) / 2;
+		int x = i - xMin;
+		int y = j - yMin;
+		int text_x = xMin - 237;
+		int text_y = yMin + 32;
+		int width = 81;
+		int height = 12;
+		if(x >= text_x && y >= text_y && x <= text_x + width && y <= text_y + height)
+		{
+			textField.setFocused(true);
+		}
+		else
+		{
+			textField.setFocused(false);
+		}
+	}
+
+	@Override
+	protected void keyTyped(char c, int i)
+	{
+		if(textField.isFocused())
+		{
+			if(c == 13 || c == 27)
+			{
+				textField.setFocused(false);
+			}
+			else
+			{
+				textField.textboxKeyTyped(c, i);
+			}
+		}
+		else
+		{
+			super.keyTyped(c, i);
+		}
+	}
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_)
 	{
-		this.fontRendererObj.drawString(this.pixelCondenser.hasCustomInventoryName() ? this.pixelCondenser.getInventoryName() : StatCollector.translateToLocal(this.pixelCondenser.getInventoryName()), 278, this.ySize - 207, 4210752);
-		this.fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 250, this.ySize - 54, 4210752);
+		this.fontRendererObj.drawString(this.pixelCondenser.hasCustomInventoryName() ? this.pixelCondenser.getInventoryName() : StatCollector.translateToLocal(this.pixelCondenser.getInventoryName()), 50, this.ySize - 255, 4210752);
+		this.fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 2, this.ySize - 102, 4210752);
+		this.textField.drawTextBox();
 	}
 
 	@Override
