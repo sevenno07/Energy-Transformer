@@ -61,6 +61,9 @@ public class EnergyTransformer
 
 		LOGGER.info("Loading items");
 		EnergyItemList.loadItems();
+		
+		LOGGER.info("Loading achievement list");
+		EnergyAchievementList.load();
 	}
 
 	@EventHandler
@@ -74,9 +77,6 @@ public class EnergyTransformer
 
 		LOGGER.info("Registering GUI Handler");
 		NetworkRegistry.INSTANCE.registerGuiHandler(this.instance, new GuiHandler());
-
-		LOGGER.info("Loading achievement list");
-		EnergyAchievementList.load();
 	}
 
 	@EventHandler
