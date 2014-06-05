@@ -1,11 +1,10 @@
-package energy.transformer.common.blocks;
+package energy.transformer.common.cables;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import energy.transformer.common.EnergyTransformer;
-import energy.transformer.common.cables.IEPCCable;
 import energy.transformer.common.tileentity.IEPCContainer;
 
 public class TileEpcOutputCable extends TileEntity implements IEPCCable

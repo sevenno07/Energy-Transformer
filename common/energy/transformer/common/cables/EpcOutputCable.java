@@ -1,14 +1,13 @@
-package energy.transformer.common.blocks;
+package energy.transformer.common.cables;
 
-import energy.transformer.common.cables.TileEpcInputCable;
+import energy.transformer.common.blocks.EnergyTransformerGenericBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 public class EpcOutputCable extends EnergyTransformerGenericBlock
 {
-
-	protected EpcOutputCable()
+	public EpcOutputCable()
 	{
 		super(Material.rock, "epcOutputCable", "epc_output_cable");
 	}
@@ -24,5 +23,4 @@ public class EpcOutputCable extends EnergyTransformerGenericBlock
 	{
 		return true;
 	}
-
 }

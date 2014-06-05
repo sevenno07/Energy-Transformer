@@ -3,6 +3,7 @@ package energy.transformer.common.blocks;
 import net.minecraft.block.Block;
 import cpw.mods.fml.common.registry.GameRegistry;
 import energy.transformer.common.cables.EpcInputCable;
+import energy.transformer.common.cables.EpcOutputCable;
 import energy.transformer.common.cables.EpcTransportCable;
 
 /**
