@@ -3,22 +3,31 @@ package energy.transformer.common.cables;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
+/**
+ * Any cable TileEntity implements this
+ * 
+ * @author utybo
+ * 
+ */
 public interface IEPCCable
 {
 	/**
 	 * Used by CableHelper
+	 * 
 	 * @return contained EPC
 	 */
 	public int getContainedEPC();
 
 	/**
 	 * Used by CableHelper
+	 * 
 	 * @return queried EPC
 	 */
 	public int getQueriedEPC();
 
 	/**
 	 * Takes EPC from the cable
+	 * 
 	 * @param from
 	 * @param epc
 	 */
@@ -26,6 +35,7 @@ public interface IEPCCable
 
 	/**
 	 * Queries EPC
+	 * 
 	 * @param from
 	 * @param epc
 	 */

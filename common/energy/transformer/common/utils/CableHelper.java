@@ -4,10 +4,17 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import energy.transformer.common.cables.IEPCCable;
 
+/**
+ * Cable stuff, useful for getting cable values
+ * 
+ * @author utybo
+ * 
+ */
 public class CableHelper
 {
 	/**
 	 * Returns the query of a cable at coords x, y and z
+	 * 
 	 * @param world
 	 * @param x
 	 * @param y
@@ -26,6 +33,7 @@ public class CableHelper
 
 	/**
 	 * Returns the cable's EPC
+	 * 
 	 * @param world
 	 * @param x
 	 * @param y

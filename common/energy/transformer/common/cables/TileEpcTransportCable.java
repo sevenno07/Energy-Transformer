@@ -7,7 +7,12 @@ import net.minecraftforge.common.util.ForgeDirection;
 import energy.transformer.common.EnergyTransformer;
 import energy.transformer.common.utils.CableHelper;
 import energy.transformer.common.utils.DirectionHelper;
-
+/**
+ * Cable hype!<br/>
+ * This code is BuildCraft code, but I heavily modified it
+ * @author utybo
+ *
+ */
 public class TileEpcTransportCable extends TileEntity implements IEPCCable
 {
 	protected TileEntity[] nearbyTileEntity = new TileEntity[6];

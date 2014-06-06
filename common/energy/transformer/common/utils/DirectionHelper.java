@@ -2,11 +2,20 @@ package energy.transformer.common.utils;
 
 import net.minecraftforge.common.util.ForgeDirection;
 
+/**
+ * ForgeDirection <===> int<br/>
+ * It's as simple as that
+ * 
+ * @author utybo
+ * 
+ */
 public class DirectionHelper
 {
 	/**
 	 * Tranforms an int into a ForgeDirection
-	 * @param i The int
+	 * 
+	 * @param i
+	 *            The int
 	 * @return cast result
 	 */
 	public static ForgeDirection castDirectionFromInt(int i)
@@ -29,12 +38,13 @@ public class DirectionHelper
 			return ForgeDirection.UNKNOWN;
 		}
 	}
-	
+
 	/**
 	 * @see #castDirectionFromInt(int)
 	 * @param d
 	 * @return the ForgeDirection
-	 * @throws Exception if the ForgeDirection is unknown
+	 * @throws Exception
+	 *             if the ForgeDirection is unknown
 	 */
 	public static int castIntFromDirection(ForgeDirection d) throws Exception
 	{
