@@ -4,6 +4,11 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class DirectionHelper
 {
+	/**
+	 * Tranforms an int into a ForgeDirection
+	 * @param i The int
+	 * @return cast result
+	 */
 	public static ForgeDirection castDirectionFromInt(int i)
 	{
 		switch(i)
@@ -22,6 +27,33 @@ public class DirectionHelper
 			return ForgeDirection.DOWN;
 		default:
 			return ForgeDirection.UNKNOWN;
+		}
+	}
+	
+	/**
+	 * @see #castDirectionFromInt(int)
+	 * @param d
+	 * @return the ForgeDirection
+	 * @throws Exception if the ForgeDirection is unknown
+	 */
+	public static int castIntFromDirection(ForgeDirection d) throws Exception
+	{
+		switch(d)
+		{
+		case EAST:
+			return 0;
+		case WEST:
+			return 1;
+		case SOUTH:
+			return 2;
+		case NORTH:
+			return 3;
+		case UP:
+			return 4;
+		case DOWN:
+			return 5;
+		default:
+			throw new Exception();
 		}
 	}
 }

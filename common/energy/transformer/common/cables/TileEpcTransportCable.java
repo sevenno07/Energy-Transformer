@@ -49,6 +49,9 @@ public class TileEpcTransportCable extends TileEntity implements IEPCCable
 	}
 
 	@Override
+	/**
+	 * Updates the cable. Uses other useful methods to have a customizable behavior
+	 */
 	public void updateEntity()
 	{
 		int x = this.xCoord;
@@ -125,36 +128,28 @@ public class TileEpcTransportCable extends TileEntity implements IEPCCable
 
 	}
 
+	/**
+	 * Executed if and only if <br/>
+	 * => The EPC amount is different from 0<br/>
+	 * => The EPC amount of the nearby cable is 0 and its query is > 0
+	 * @param fromSide
+	 * @param sideTileEntity
+	 * @param epcUsed
+	 */
 	protected void executeSideAction(int fromSide, TileEntity sideTileEntity, int epcUsed)
 	{}
 
+	/**
+	 * Triggered before the EPC transport
+	 */
 	protected void executePreAction()
 	{}
 
+	/**
+	 * Triggered after the EPC transport
+	 */
 	protected void executePostAction()
 	{}
-
-	@Override
-	public int getCableEPC(World w, int x, int y, int z)
-	{
-		TileEntity te = w.getTileEntity(x, y, z);
-		if(te != null && te instanceof IEPCCable)
-		{
-			return ((IEPCCable)te).getContainedEPC();
-		}
-		return 0;
-	}
-
-	@Override
-	public int getCableQuery(World w, int x, int y, int z)
-	{
-		TileEntity te = w.getTileEntity(x, y, z);
-		if(te != null && te instanceof IEPCCable)
-		{
-			return ((IEPCCable)te).getQueriedEPC();
-		}
-		return 0;
-	}
 
 	@Override
 	public int getContainedEPC()

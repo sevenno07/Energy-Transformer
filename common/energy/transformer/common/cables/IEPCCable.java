@@ -5,10 +5,29 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public interface IEPCCable
 {
-	public int getCableQuery(World world, int x, int y, int z);
-	public int getCableEPC(World world, int x, int y, int z);
+	/**
+	 * Used by CableHelper
+	 * @return contained EPC
+	 */
 	public int getContainedEPC();
+
+	/**
+	 * Used by CableHelper
+	 * @return queried EPC
+	 */
 	public int getQueriedEPC();
+
+	/**
+	 * Takes EPC from the cable
+	 * @param from
+	 * @param epc
+	 */
 	public void takeEPC(ForgeDirection from, int epc);
+
+	/**
+	 * Queries EPC
+	 * @param from
+	 * @param epc
+	 */
 	public void queryEPC(ForgeDirection from, int epc);
 }
