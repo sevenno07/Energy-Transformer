@@ -72,27 +72,12 @@ public class TileEpcTransportCable extends TileEntity implements IEPCCable
 		nextEPCQuery = new int[6];
 		nextEPC = new int[6];
 
-		nearbyTileEntity[0] = world.getTileEntity(x++, y, z);
-		nearbyTileEntity[1] = world.getTileEntity(x--, y, z);
-		nearbyTileEntity[2] = world.getTileEntity(x, y, z++);
-		nearbyTileEntity[3] = world.getTileEntity(x, y, z--);
-		nearbyTileEntity[4] = world.getTileEntity(x, y++, z);
-		nearbyTileEntity[5] = world.getTileEntity(x, y--, z);
-
-		nearbyCableEPCContained[0] = CableHelper.getCableEPC(world, x++, y, z);
-		nearbyCableEPCContained[1] = CableHelper.getCableEPC(world, x--, y, z);
-		nearbyCableEPCContained[2] = CableHelper.getCableEPC(world, x, y, z++);
-		nearbyCableEPCContained[3] = CableHelper.getCableEPC(world, x, y, z--);
-		nearbyCableEPCContained[4] = CableHelper.getCableEPC(world, x, y++, z);
-		nearbyCableEPCContained[5] = CableHelper.getCableEPC(world, x, y--, z);
-
-		nearbyCableEPCQueried[0] = CableHelper.getCableQuery(world, x++, y, z);
-		nearbyCableEPCQueried[1] = CableHelper.getCableQuery(world, x--, y, z);
-		nearbyCableEPCQueried[2] = CableHelper.getCableQuery(world, x, y, z++);
-		nearbyCableEPCQueried[3] = CableHelper.getCableQuery(world, x, y, z--);
-		nearbyCableEPCQueried[4] = CableHelper.getCableQuery(world, x, y++, z);
-		nearbyCableEPCQueried[5] = CableHelper.getCableQuery(world, x, y--, z);
-
+		for(int i = 0; i < 6; i++)
+		{
+			nearbyTileEntity[i] = world.getTileEntity(x + DirectionHelper.castDirectionFromInt(i).offsetX, y + DirectionHelper.castDirectionFromInt(i).offsetY, z + DirectionHelper.castDirectionFromInt(i).offsetZ);
+			nearbyCableEPCContained[i] = CableHelper.getCableEPC(world, x + DirectionHelper.castDirectionFromInt(i).offsetX, y + DirectionHelper.castDirectionFromInt(i).offsetY, z + DirectionHelper.castDirectionFromInt(i).offsetZ);
+			nearbyCableEPCQueried[i] = CableHelper.getCableQuery(world, x + DirectionHelper.castDirectionFromInt(i).offsetX, y + DirectionHelper.castDirectionFromInt(i).offsetY, z + DirectionHelper.castDirectionFromInt(i).offsetZ);
+		}
 		for(int in = 0; in < 6; ++in)
 		{
 			epcContained += nearbyCableEPCContained[in];
@@ -124,7 +109,7 @@ public class TileEpcTransportCable extends TileEntity implements IEPCCable
 				}
 			}
 		}
-		
+
 		this.executePostAction();
 
 	}
@@ -133,6 +118,7 @@ public class TileEpcTransportCable extends TileEntity implements IEPCCable
 	 * Executed if and only if <br/>
 	 * => The EPC amount is different from 0<br/>
 	 * => The EPC amount of the nearby cable is 0 and its query is > 0
+	 * 
 	 * @param fromSide
 	 * @param sideTileEntity
 	 * @param epcUsed
