@@ -5,6 +5,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import energy.transformer.common.EnergyTransformer;
+import energy.transformer.common.utils.CableHelper;
 import energy.transformer.common.utils.DirectionHelper;
 
 public class TileEpcTransportCable extends TileEntity implements IEPCCable
@@ -78,19 +79,19 @@ public class TileEpcTransportCable extends TileEntity implements IEPCCable
 		nearbyTileEntity[4] = world.getTileEntity(x, y++, z);
 		nearbyTileEntity[5] = world.getTileEntity(x, y--, z);
 
-		nearbyCableEPCContained[0] = this.getCableEPC(world, x++, y, z);
-		nearbyCableEPCContained[1] = this.getCableEPC(world, x--, y, z);
-		nearbyCableEPCContained[2] = this.getCableEPC(world, x, y, z++);
-		nearbyCableEPCContained[3] = this.getCableEPC(world, x, y, z--);
-		nearbyCableEPCContained[4] = this.getCableEPC(world, x, y++, z);
-		nearbyCableEPCContained[5] = this.getCableEPC(world, x, y--, z);
+		nearbyCableEPCContained[0] = CableHelper.getCableEPC(world, x++, y, z);
+		nearbyCableEPCContained[1] = CableHelper.getCableEPC(world, x--, y, z);
+		nearbyCableEPCContained[2] = CableHelper.getCableEPC(world, x, y, z++);
+		nearbyCableEPCContained[3] = CableHelper.getCableEPC(world, x, y, z--);
+		nearbyCableEPCContained[4] = CableHelper.getCableEPC(world, x, y++, z);
+		nearbyCableEPCContained[5] = CableHelper.getCableEPC(world, x, y--, z);
 
-		nearbyCableEPCQueried[0] = this.getCableQuery(world, x++, y, z);
-		nearbyCableEPCQueried[1] = this.getCableQuery(world, x--, y, z);
-		nearbyCableEPCQueried[2] = this.getCableQuery(world, x, y, z++);
-		nearbyCableEPCQueried[3] = this.getCableQuery(world, x, y, z--);
-		nearbyCableEPCQueried[4] = this.getCableQuery(world, x, y++, z);
-		nearbyCableEPCQueried[5] = this.getCableQuery(world, x, y--, z);
+		nearbyCableEPCQueried[0] = CableHelper.getCableQuery(world, x++, y, z);
+		nearbyCableEPCQueried[1] = CableHelper.getCableQuery(world, x--, y, z);
+		nearbyCableEPCQueried[2] = CableHelper.getCableQuery(world, x, y, z++);
+		nearbyCableEPCQueried[3] = CableHelper.getCableQuery(world, x, y, z--);
+		nearbyCableEPCQueried[4] = CableHelper.getCableQuery(world, x, y++, z);
+		nearbyCableEPCQueried[5] = CableHelper.getCableQuery(world, x, y--, z);
 
 		for(int in = 0; in < 6; ++in)
 		{
