@@ -1,21 +1,22 @@
 package energy.transformer.common.cables;
 
-import energy.transformer.common.EnergyTransformer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import energy.transformer.common.EnergyTransformer;
+import energy.transformer.common.utils.DirectionHelper;
 
 public class TileEpcTransportCable extends TileEntity implements IEPCCable
 {
-	private TileEntity[] nearbyTileEntity = new TileEntity[6];
-	private int[] nearbyCableEPCContained = new int[6];
-	private int[] nearbyCableEPCQueried = new int[6];
-	private int epcQueried = 0;
-	private int epcContained = 0;
-	private int[] nextEPC = new int[6];
-	private int[] nextEPCQuery = new int[6];
-	private World world = this.getWorldObj();
+	protected TileEntity[] nearbyTileEntity = new TileEntity[6];
+	protected int[] nearbyCableEPCContained = new int[6];
+	protected int[] nearbyCableEPCQueried = new int[6];
+	protected int epcQueried = 0;
+	protected int epcContained = 0;
+	protected int[] nextEPC = new int[6];
+	protected int[] nextEPCQuery = new int[6];
+	protected World world = this.getWorldObj();
 
 	@Override
 	public void writeToNBT(NBTTagCompound nbt)
@@ -31,7 +32,7 @@ public class TileEpcTransportCable extends TileEntity implements IEPCCable
 		nbt.setInteger("epcContained", epcContained);
 		nbt.setInteger("epcQueried", epcQueried);
 	}
-	
+
 	@Override
 	public void readFromNBT(NBTTagCompound nbt)
 	{
@@ -64,8 +65,8 @@ public class TileEpcTransportCable extends TileEntity implements IEPCCable
 			epcQueried += nextEPCQuery[j];
 		}
 
-		nextEPCQuery = new int[5];
-		nextEPC = new int[5];
+		nextEPCQuery = new int[6];
+		nextEPC = new int[6];
 
 		nearbyTileEntity[0] = world.getTileEntity(x++, y, z);
 		nearbyTileEntity[1] = world.getTileEntity(x--, y, z);
@@ -101,20 +102,37 @@ public class TileEpcTransportCable extends TileEntity implements IEPCCable
 			}
 		}
 
+		this.executePreAction();
+
 		if(epcContained > 0)
 		{
 			for(int out = 0; out < 6; ++out)
 			{
 				TileEntity te = nearbyTileEntity[out];
-				if(nearbyCableEPCQueried[out] > 0 && nearbyCableEPCContained[out] == 0 && te instanceof IEPCCable)
+				if(nearbyCableEPCQueried[out] > 0 && nearbyCableEPCContained[out] == 0)
 				{
 					int epcUsed = nearbyCableEPCQueried[out] / epcQueried * epcContained;
-					((IEPCCable)te).takeEPC(castDirectionFromInt(out), epcUsed);
+					this.executeSideAction(out, te, epcUsed);
+					if(te instanceof IEPCCable)
+					{
+						((IEPCCable)te).takeEPC(DirectionHelper.castDirectionFromInt(out), epcUsed);
+					}
 				}
 			}
 		}
+		
+		this.executePostAction();
 
 	}
+
+	protected void executeSideAction(int fromSide, TileEntity sideTileEntity, int epcUsed)
+	{}
+
+	protected void executePreAction()
+	{}
+
+	protected void executePostAction()
+	{}
 
 	@Override
 	public int getCableEPC(World w, int x, int y, int z)
@@ -207,27 +225,6 @@ public class TileEpcTransportCable extends TileEntity implements IEPCCable
 		default:
 			EnergyTransformer.LOGGER.error("A mod tried to query " + epc + " epc(s) in unknown side " + from.toString() + "!");
 			break;
-		}
-	}
-
-	public ForgeDirection castDirectionFromInt(int i)
-	{
-		switch(i)
-		{
-		case 0:
-			return ForgeDirection.EAST;
-		case 1:
-			return ForgeDirection.WEST;
-		case 2:
-			return ForgeDirection.SOUTH;
-		case 3:
-			return ForgeDirection.NORTH;
-		case 4:
-			return ForgeDirection.UP;
-		case 5:
-			return ForgeDirection.DOWN;
-		default:
-			return ForgeDirection.UNKNOWN;
 		}
 	}
 
