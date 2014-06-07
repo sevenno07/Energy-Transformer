@@ -69,6 +69,7 @@ public class TileEntityPixelCondenser extends TileEntity implements IEPCContaine
 		}
 	}
 
+	@Override
 	public Packet getDescriptionPacket()
 	{
 		NBTTagCompound nbttagcompound = new NBTTagCompound();
@@ -76,6 +77,7 @@ public class TileEntityPixelCondenser extends TileEntity implements IEPCContaine
 		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 3, nbttagcompound);
 	}
 
+	@Override
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity updateTileEntity)
 	{
 		this.readFromNBT(updateTileEntity.func_148857_g());

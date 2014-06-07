@@ -1,17 +1,21 @@
 package energy.transformer.common.cables;
 
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import energy.transformer.common.EnergyTransformer;
 import energy.transformer.common.utils.CableHelper;
 import energy.transformer.common.utils.DirectionHelper;
+
 /**
  * Cable hype!<br/>
  * This code is BuildCraft code, but I heavily modified it
+ * 
  * @author utybo
- *
+ * 
  */
 public class TileEpcTransportCable extends TileEntity implements IEPCCable
 {
@@ -22,7 +26,6 @@ public class TileEpcTransportCable extends TileEntity implements IEPCCable
 	protected int epcContained = 0;
 	protected int[] nextEPC = new int[6];
 	protected int[] nextEPCQuery = new int[6];
-	protected World world = this.getWorldObj();
 
 	@Override
 	public void writeToNBT(NBTTagCompound nbt)
@@ -55,6 +58,20 @@ public class TileEpcTransportCable extends TileEntity implements IEPCCable
 	}
 
 	@Override
+	public Packet getDescriptionPacket()
+	{
+		NBTTagCompound nbttagcompound = new NBTTagCompound();
+		this.writeToNBT(nbttagcompound);
+		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 3, nbttagcompound);
+	}
+
+	@Override
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity updateTileEntity)
+	{
+		this.readFromNBT(updateTileEntity.func_148857_g());
+	}
+
+	@Override
 	/**
 	 * Updates the cable. Uses other useful methods to have a customizable behavior
 	 */
@@ -79,9 +96,9 @@ public class TileEpcTransportCable extends TileEntity implements IEPCCable
 
 		for(int i = 0; i < 6; i++)
 		{
-			nearbyTileEntity[i] = world.getTileEntity(x + DirectionHelper.castDirectionFromInt(i).offsetX, y + DirectionHelper.castDirectionFromInt(i).offsetY, z + DirectionHelper.castDirectionFromInt(i).offsetZ);
-			nearbyCableEPCContained[i] = CableHelper.getCableEPC(world, x + DirectionHelper.castDirectionFromInt(i).offsetX, y + DirectionHelper.castDirectionFromInt(i).offsetY, z + DirectionHelper.castDirectionFromInt(i).offsetZ);
-			nearbyCableEPCQueried[i] = CableHelper.getCableQuery(world, x + DirectionHelper.castDirectionFromInt(i).offsetX, y + DirectionHelper.castDirectionFromInt(i).offsetY, z + DirectionHelper.castDirectionFromInt(i).offsetZ);
+			nearbyTileEntity[i] = this.worldObj.getTileEntity(x + DirectionHelper.castDirectionFromInt(i).offsetX, y + DirectionHelper.castDirectionFromInt(i).offsetY, z + DirectionHelper.castDirectionFromInt(i).offsetZ);
+			nearbyCableEPCContained[i] = CableHelper.getCableEPC(this.worldObj, x + DirectionHelper.castDirectionFromInt(i).offsetX, y + DirectionHelper.castDirectionFromInt(i).offsetY, z + DirectionHelper.castDirectionFromInt(i).offsetZ);
+			nearbyCableEPCQueried[i] = CableHelper.getCableQuery(this.worldObj, x + DirectionHelper.castDirectionFromInt(i).offsetX, y + DirectionHelper.castDirectionFromInt(i).offsetY, z + DirectionHelper.castDirectionFromInt(i).offsetZ);
 		}
 		for(int in = 0; in < 6; ++in)
 		{
@@ -214,5 +231,4 @@ public class TileEpcTransportCable extends TileEntity implements IEPCCable
 			break;
 		}
 	}
-
 }
