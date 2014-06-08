@@ -25,6 +25,7 @@ public class PixelCondenser extends BlockContainer
 	private IIcon PCIconTop;
 	private IIcon PCIconBot;
 	private IIcon PCIconFront;
+	private IIcon PCIconBack;
 	
 	protected PixelCondenser()
 	{
@@ -41,7 +42,7 @@ public class PixelCondenser extends BlockContainer
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int metadata)
     {
-        return side == 1 ? this.PCIconTop : (side == 0 ? this.PCIconBot : (side != metadata ? this.blockIcon : this.PCIconFront));
+        return side == 1 ? this.PCIconTop : (side == 0 ? this.PCIconBot : (side == metadata ? this.PCIconFront : this.blockIcon));
     }
 	
     public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase Entity, ItemStack Item)
@@ -51,41 +52,25 @@ public class PixelCondenser extends BlockContainer
         if (l == 0)
         {
         	world.setBlockMetadataWithNotify(x, y, z, 2, 2);
+//        	world.setBlockMetadataWithNotify(x, y, z, 3, 2);
         }
 
         if (l == 1)
         {
         	world.setBlockMetadataWithNotify(x, y, z, 5, 2);
+//        	world.setBlockMetadataWithNotify(x, y, z, 4, 2);
         }
 
         if (l == 2)
         {
         	world.setBlockMetadataWithNotify(x, y, z, 3, 2);
+//        	world.setBlockMetadataWithNotify(x, y, z, 2, 2);
         }
 
         if (l == 3)
         {
         	world.setBlockMetadataWithNotify(x, y, z, 4, 2);
-        }
-        
-        if (l == 0)
-        {
-        	world.setBlockMetadataWithNotify(x, y, z, 2, 4);
-        }
-
-        if (l == 1)
-        {
-        	world.setBlockMetadataWithNotify(x, y, z, 5, 4);
-        }
-
-        if (l == 2)
-        {
-        	world.setBlockMetadataWithNotify(x, y, z, 3, 4);
-        }
-
-        if (l == 3)
-        {
-        	world.setBlockMetadataWithNotify(x, y, z, 4, 4);
+//        	world.setBlockMetadataWithNotify(x, y, z, 5, 2);
         }
     }
 	
@@ -97,6 +82,7 @@ public class PixelCondenser extends BlockContainer
 		PCIconTop = register.registerIcon("energy_transformer:pcblock_top");
 		PCIconBot = register.registerIcon("energy_transformer:pcblock_bot");
 		PCIconFront = register.registerIcon("energy_transformer:pcblock_front");
+		PCIconBack = register.registerIcon("energy_transformer:pcblock_back");
 	}
 	
 	@Override
