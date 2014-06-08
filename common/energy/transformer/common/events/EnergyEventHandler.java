@@ -1,6 +1,7 @@
 package energy.transformer.common.events;
 
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import energy.transformer.common.achievements.EnergyAchievementList;
@@ -15,5 +16,10 @@ public class EnergyEventHandler
 		{
 			event.player.triggerAchievement(EnergyAchievementList.craftCapsule);
 		}
+	}
+
+	public void onTooltip(ItemTooltipEvent event)
+	{
+		//event.toolTip.add(arg0);
 	}
 }

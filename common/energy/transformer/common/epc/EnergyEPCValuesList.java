@@ -1,5 +1,6 @@
 package energy.transformer.common.epc;
 
+import energy.transformer.common.blocks.EnergyBlockList;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -27,102 +28,106 @@ public class EnergyEPCValuesList
 	private static void loadVanillaEPCValues()
 	{
 		// Blocks
-		EPCDatabase.setEPCValue(Blocks.stone, 4);
-		EPCDatabase.setEPCValue(Blocks.grass, 4);
-		EPCDatabase.setEPCValue(Blocks.dirt, 1);
 		EPCDatabase.setEPCValue(Blocks.cobblestone, 1);
-		EPCDatabase.setEPCValue(Blocks.planks, 1);
-		EPCDatabase.setEPCValue(Blocks.sapling, 4);
-		EPCDatabase.setEPCValue(Blocks.sand, 2);
-		EPCDatabase.setEPCValue(Blocks.gravel, 2);
-		EPCDatabase.setEPCValue(Blocks.gold_ore, 768);
-		EPCDatabase.setEPCValue(Blocks.iron_ore, 192);
-		EPCDatabase.setEPCValue(Blocks.coal_ore, 24);
-		EPCDatabase.setEPCValue(Blocks.log, 4);
-		EPCDatabase.setEPCValue(Blocks.log2, 4);
-		EPCDatabase.setEPCValue(Blocks.leaves, 4);
-		EPCDatabase.setEPCValue(Blocks.leaves2, 4);
-		EPCDatabase.setEPCValue(Blocks.glass, 8);
-		EPCDatabase.setEPCValue(Blocks.lapis_ore, 192);
-		EPCDatabase.setEPCValue(Blocks.lapis_block, 1152);
-		EPCDatabase.setEPCValue(Blocks.dispenser, 59);
+		setBlockMetaEPCValue(Blocks.stone_slab, 1, 7);
+		EPCDatabase.setEPCValue(Blocks.deadbush, 1);
+		setBlockMetaEPCValue(Blocks.tallgrass, 1, 2);
+		EPCDatabase.setEPCValue(Blocks.dirt, 1);
+		EPCDatabase.setEPCValue(Blocks.grass, 1);
+		EPCDatabase.setEPCValue(Blocks.ice, 1);
+		setBlockMetaEPCValue(Blocks.leaves, 1, 3);
+		setBlockMetaEPCValue(Blocks.leaves2, 1, 1);
+		EPCDatabase.setEPCValue(Blocks.mycelium, 1);
+		EPCDatabase.setEPCValue(Blocks.netherrack, 1);
+		EPCDatabase.setEPCValue(Blocks.sand, 1);
+		EPCDatabase.setEPCValue(Blocks.snow, 1);
+		EPCDatabase.setEPCValue(Blocks.stone, 1);
+		EPCDatabase.setEPCValue(Blocks.stonebrick, 1);
+		EPCDatabase.setEPCValue(Blocks.stone_brick_stairs, 1);
+		EPCDatabase.setEPCValue(Blocks.stone_stairs, 1);
+		EPCDatabase.setEPCValue(Blocks.end_stone, 1);
+		EPCDatabase.setEPCValue(Blocks.stone_button, 2);
+		EPCDatabase.setEPCValue(Blocks.stone_pressure_plate, 2);
+		EPCDatabase.setEPCValue(Blocks.gravel, 4);
+		EPCDatabase.setEPCValue(Blocks.nether_brick, 4);
 		EPCDatabase.setEPCValue(Blocks.sandstone, 4);
-		EPCDatabase.setEPCValue(Blocks.noteblock, 16);
-		EPCDatabase.setEPCValue(Blocks.web, 8);
-		EPCDatabase.setEPCValue(Blocks.tallgrass, 6);
-		EPCDatabase.setEPCValue(Blocks.deadbush, 8);
-		EPCDatabase.setEPCValue(Blocks.wool, 16);
-		EPCDatabase.setEPCValue(Blocks.yellow_flower, 16);
-		EPCDatabase.setEPCValue(Blocks.red_flower, 16);
-		EPCDatabase.setEPCValue(Blocks.brown_mushroom, 16);
-		EPCDatabase.setEPCValue(Blocks.red_mushroom, 16);
-		EPCDatabase.setEPCValue(Blocks.gold_block, 4608);
-		EPCDatabase.setEPCValue(Blocks.iron_block, 1152);
-		EPCDatabase.setEPCValue(Blocks.stone_slab, 1);
-		EPCDatabase.setEPCValue(Blocks.brick_block, 16);
-		EPCDatabase.setEPCValue(Blocks.tnt, 32);
-		EPCDatabase.setEPCValue(Blocks.bookshelf, 64);
-		EPCDatabase.setEPCValue(Blocks.mossy_cobblestone, 3);
-		EPCDatabase.setEPCValue(Blocks.obsidian, 128);
-		EPCDatabase.setEPCValue(Blocks.torch, 0);
-		EPCDatabase.setEPCValue(Blocks.mob_spawner, 256);
-		EPCDatabase.setEPCValue(Blocks.oak_stairs, 8);
-		EPCDatabase.setEPCValue(Blocks.chest, 16);
-		EPCDatabase.setEPCValue(Blocks.diamond_ore, 3072);
-		EPCDatabase.setEPCValue(Blocks.diamond_block, 18432);
-		EPCDatabase.setEPCValue(Blocks.crafting_table, 8);
-		EPCDatabase.setEPCValue(Blocks.furnace, 8);
-		EPCDatabase.setEPCValue(Blocks.lever, 2);
-		EPCDatabase.setEPCValue(Blocks.stone_pressure_plate, 12);
-		EPCDatabase.setEPCValue(Blocks.wooden_pressure_plate, 6);
-		EPCDatabase.setEPCValue(Blocks.redstone_ore, 2);
-		EPCDatabase.setEPCValue(Blocks.stone_button, 4);
-		EPCDatabase.setEPCValue(Blocks.ice, 16);
-		EPCDatabase.setEPCValue(Blocks.snow, 4);
+		EPCDatabase.setEPCValue(Blocks.lever, 5);
 		EPCDatabase.setEPCValue(Blocks.cactus, 8);
-		EPCDatabase.setEPCValue(Blocks.clay, 4);
-		EPCDatabase.setEPCValue(Blocks.jukebox, 2056);
-		EPCDatabase.setEPCValue(Blocks.pumpkin, 32);
-		EPCDatabase.setEPCValue(Blocks.netherrack, 8);
-		EPCDatabase.setEPCValue(Blocks.soul_sand, 32);
-		EPCDatabase.setEPCValue(Blocks.glowstone, 256);
-		EPCDatabase.setEPCValue(Blocks.lit_pumpkin, 40);
-		EPCDatabase.setEPCValue(Blocks.trapdoor, 3);
-		EPCDatabase.setEPCValue(Blocks.stonebrick, 16);
-		EPCDatabase.setEPCValue(Blocks.iron_bars, 48);
-		EPCDatabase.setEPCValue(Blocks.glass_pane, 2);
-		EPCDatabase.setEPCValue(Blocks.melon_block, 16);
+		EPCDatabase.setEPCValue(Blocks.furnace, 8);
 		EPCDatabase.setEPCValue(Blocks.vine, 8);
-		EPCDatabase.setEPCValue(Blocks.fence_gate, 6);
-		EPCDatabase.setEPCValue(Blocks.brick_stairs, 16);
-		EPCDatabase.setEPCValue(Blocks.stone_brick_stairs, 16);
-		EPCDatabase.setEPCValue(Blocks.mycelium, 8);
+		setBlockMetaEPCValue(Blocks.planks, 8, 5);
+		setBlockMetaEPCValue(Blocks.wooden_slab, 8, 5);
+		EPCDatabase.setEPCValue(Blocks.torch, 9);
+		EPCDatabase.setEPCValue(Blocks.web, 12);
+		EPCDatabase.setEPCValue(Blocks.fence, 12);
+		EPCDatabase.setEPCValue(Blocks.acacia_stairs, 12);
+		EPCDatabase.setEPCValue(Blocks.birch_stairs, 12);
+		EPCDatabase.setEPCValue(Blocks.dark_oak_stairs, 12);
+		EPCDatabase.setEPCValue(Blocks.jungle_stairs, 12);
+		EPCDatabase.setEPCValue(Blocks.oak_stairs, 12);
+		EPCDatabase.setEPCValue(Blocks.spruce_stairs, 12);
+		EPCDatabase.setEPCValue(Blocks.ladder, 14);
+		EPCDatabase.setEPCValue(Blocks.red_flower, 16);
+		EPCDatabase.setEPCValue(Blocks.yellow_flower, 16);
 		EPCDatabase.setEPCValue(Blocks.waterlily, 16);
-		EPCDatabase.setEPCValue(Blocks.nether_brick, 64);
-		EPCDatabase.setEPCValue(Blocks.nether_brick_fence, 8);
-		EPCDatabase.setEPCValue(Blocks.nether_brick_stairs, 8);
-		EPCDatabase.setEPCValue(Blocks.enchanting_table, 4664);
-		EPCDatabase.setEPCValue(Blocks.dragon_egg, 100000);
-		EPCDatabase.setEPCValue(Blocks.beacon, 100064);
-		EPCDatabase.setEPCValue(Blocks.cobblestone_wall, 6);
-		EPCDatabase.setEPCValue(Blocks.wooden_button, 2);
-		EPCDatabase.setEPCValue(Blocks.redstone_block, 72);
-		EPCDatabase.setEPCValue(Blocks.quartz_ore, 32);
-		EPCDatabase.setEPCValue(Blocks.quartz_block, 64);
-		EPCDatabase.setEPCValue(Blocks.quartz_stairs, 64);
-		EPCDatabase.setEPCValue(Blocks.hay_block, 32 * 9);
-		EPCDatabase.setEPCValue(Blocks.carpet, 8);
-		EPCDatabase.setEPCValue(Blocks.hardened_clay, 32);
-		setBlockMetaEPCValue(Blocks.stained_hardened_clay, 32, 15);
-		EPCDatabase.setEPCValue(Blocks.coal_block, 144);
-		EPCDatabase.setEPCValue(Blocks.packed_ice, 16);
-		EPCDatabase.setEPCValue(Blocks.acacia_stairs, 2);
-		EPCDatabase.setEPCValue(Blocks.dark_oak_stairs, 2);
-		setBlockMetaEPCValue(Blocks.stained_glass, 8, 15);
-		setBlockMetaEPCValue(Blocks.stained_glass_pane, 8, 15);
-
+		EPCDatabase.setEPCValue(Blocks.wooden_pressure_plate, 16);
+		EPCDatabase.setEPCValue(Blocks.trapdoor, 24);
+		EPCDatabase.setEPCValue(Blocks.crafting_table, 32);
+		EPCDatabase.setEPCValue(Blocks.fence_gate, 32);
+		EPCDatabase.setEPCValue(Blocks.brown_mushroom, 32);
+		EPCDatabase.setEPCValue(Blocks.red_mushroom, 32);
+		setBlockMetaEPCValue(Blocks.sapling, 32, 5);
+		setBlockMetaEPCValue(Blocks.log, 32, 3);
+		setBlockMetaEPCValue(Blocks.log2, 32, 1);
+		EPCDatabase.setEPCValue(Blocks.reeds, 32);
+		setBlockMetaEPCValue(Blocks.wool, 48, 15);
+		EPCDatabase.setEPCValue(Blocks.soul_sand, 49);
+		EPCDatabase.setEPCValue(Blocks.chest, 64);
+		EPCDatabase.setEPCValue(Blocks.obsidian, 64);
+		EPCDatabase.setEPCValue(Blocks.redstone_torch, 68);
+		EPCDatabase.setEPCValue(Blocks.iron_bars, 48);
+		EPCDatabase.setEPCValue(Blocks.rail, 96);
+		EPCDatabase.setEPCValue(Blocks.dispenser, 119);
+		EPCDatabase.setEPCValue(Blocks.noteblock, 128);
+		EPCDatabase.setEPCValue(Blocks.lit_pumpkin, 144);
+		EPCDatabase.setEPCValue(Blocks.pumpkin, 144);
+		EPCDatabase.setEPCValue(Blocks.melon_block, 144);
+		EPCDatabase.setEPCValue(Blocks.bed, 144);
+		EPCDatabase.setEPCValue(Blocks.mossy_cobblestone, 145);
+		EPCDatabase.setEPCValue(Blocks.brick_block, 256);
+		EPCDatabase.setEPCValue(Blocks.clay, 256);
+		EPCDatabase.setEPCValue(Blocks.detector_rail, 256);
+		EPCDatabase.setEPCValue(Blocks.bookshelf, 336);
+		EPCDatabase.setEPCValue(Blocks.brick_stairs, 348);
+		EPCDatabase.setEPCValue(Blocks.piston, 348);
+		EPCDatabase.setEPCValue(Blocks.sticky_piston, 372);
+		EPCDatabase.setEPCValue(Blocks.cake, 384);
+		EPCDatabase.setEPCValue(Blocks.tnt, 964);
+		EPCDatabase.setEPCValue(Blocks.glowstone, 1536);
+		EPCDatabase.setEPCValue(Blocks.iron_door, 1536);
+		EPCDatabase.setEPCValue(Blocks.brewing_stand, 1539);
+		EPCDatabase.setEPCValue(Blocks.golden_rail, 2048);
+		EPCDatabase.setEPCValue(Blocks.iron_block, 2304);
+		EPCDatabase.setEPCValue(Blocks.lapis_block, 7776);
+		EPCDatabase.setEPCValue(Blocks.jukebox, 8256);
+		EPCDatabase.setEPCValue(Blocks.enchanting_table, 16736);
+		EPCDatabase.setEPCValue(Blocks.gold_block, 18432);
+		EPCDatabase.setEPCValue(EnergyBlockList.pixelCondenser, 42011);
+		EPCDatabase.setEPCValue(Blocks.diamond_block, 73728);
+		EPCDatabase.setEPCValue(Blocks.dragon_egg, 139264);
+		
 		// Items
-		EPCDatabase.setEPCValue(Items.iron_shovel, 130);
+		EPCDatabase.setEPCValue(Items.stick, 4);
+		EPCDatabase.setEPCValue(Items.flint, 4);
+		setItemMetaEPCValue(Items.dye, 8, 15);
+		EPCDatabase.setEPCValue(Items.fishing_rod, 12);
+		EPCDatabase.setEPCValue(Items.string, 12);
+		EPCDatabase.setEPCValue(Items.arrow, 14);
+		EPCDatabase.setEPCValue(Items.wheat_seeds, 16);
+		EPCDatabase.setEPCValue(Items.pumpkin_seeds, 16);
+		EPCDatabase.setEPCValue(Items.melon_seeds, 16);
+		// TODO Aller sur http://tekkitclassic.wikia.com/wiki/EMC
+		/*EPCDatabase.setEPCValue(Items.iron_shovel, 130);
 		EPCDatabase.setEPCValue(Items.iron_pickaxe, 388);
 		EPCDatabase.setEPCValue(Items.iron_axe, 388);
 		EPCDatabase.setEPCValue(Items.flint_and_steel, 144);
@@ -259,7 +264,7 @@ public class EnergyEPCValuesList
 		EPCDatabase.setEPCValue(Items.name_tag, 128);
 		EPCDatabase.setEPCValue(Items.iron_horse_armor, 640);
 		EPCDatabase.setEPCValue(Items.golden_horse_armor, 2560);
-		EPCDatabase.setEPCValue(Items.diamond_horse_armor, 10240);
+		EPCDatabase.setEPCValue(Items.diamond_horse_armor, 10240);*/
 
 	}
 
@@ -283,7 +288,6 @@ public class EnergyEPCValuesList
 			{
 				EPCDatabase.setEPCValue(item, epc, i);
 			}
-
 		}
 	}
 }
