@@ -1,15 +1,23 @@
 package energy.transformer.common.blocks.container;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import energy.transformer.common.tileentity.TileEntityPixelCondenser;
 
 public class ContainerPixelCondenser extends Container
 {
+	private List itemList = new ArrayList();
+
 	private TileEntityPixelCondenser tileEntityPixelCondenser;
+
+	private static InventoryBasic inventory = new InventoryBasic("tmp", true, 45);
 
 	public ContainerPixelCondenser(InventoryPlayer inventory, TileEntityPixelCondenser te)
 	{
@@ -36,6 +44,8 @@ public class ContainerPixelCondenser extends Container
 		this.addSlotToContainer(new Slot(te, 40, 146, 94));
 
 		this.bindPlayerInventory(inventory);
+
+		this.scrollTo(0.0F);
 	}
 
 	private void bindPlayerInventory(InventoryPlayer inventory)
@@ -94,5 +104,33 @@ public class ContainerPixelCondenser extends Container
 			}
 		}
 		return itemstack;
+	}
+
+	public void scrollTo(float currentScroll)
+	{
+		int i = this.itemList.size() / 9 - 5 + 1;
+		int j = (int)((double)(currentScroll * (float)i) + 0.5D);
+
+		if(j < 0)
+		{
+			j = 0;
+		}
+
+		for(int k = 0; k < 5; ++k)
+		{
+			for(int l = 0; l < 9; ++l)
+			{
+				int i1 = l + (k + j) * 9;
+
+				if(i1 >= 0 && i1 < this.itemList.size())
+				{
+					this.inventory.setInventorySlotContents(l + k * 9, (ItemStack)this.itemList.get(i1));
+				}
+				else
+				{
+					this.inventory.setInventorySlotContents(l + k * 9, (ItemStack)null);
+				}
+			}
+		}
 	}
 }

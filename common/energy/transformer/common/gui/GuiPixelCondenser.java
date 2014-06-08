@@ -8,6 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
 import energy.transformer.common.EnergyTransformer;
@@ -17,6 +18,7 @@ import energy.transformer.common.tileentity.TileEntityPixelCondenser;
 public class GuiPixelCondenser extends GuiContainer
 {
 	private static final ResourceLocation pixelCondenserGuiTexture = new ResourceLocation(EnergyTransformer.MODID.toLowerCase() + ":textures/gui/EnergyPixelCondenserGui.png");
+	private ResourceLocation pixelCondenserGuiTexture2 = new ResourceLocation(EnergyTransformer.MODID.toLowerCase() + ":textures/gui/EnergyPixelCondenserGui_side.png");
 
 	private TileEntityPixelCondenser pixelCondenser;
 
@@ -24,12 +26,70 @@ public class GuiPixelCondenser extends GuiContainer
 
 	private GuiTextField textField;
 
+	boolean isScrolling;
+	boolean wasClicking;
+	float currentScroll = 0.0F;
+	int slotPos = 0;
+	int prevSlotPos = 0;
+
 	public GuiPixelCondenser(InventoryPlayer inventory, TileEntityPixelCondenser te)
 	{
 		super(new ContainerPixelCondenser(inventory, te));
 		this.pixelCondenser = te;
 		this.xSize = 256;
 		this.ySize = 256;
+	}
+
+	@Override
+	public void drawScreen(int mouseX, int mouseY, float par3)
+	{
+		super.drawScreen(mouseX, mouseY, par3);
+		this.updateScrollbar(mouseX, mouseY, par3);
+	}
+
+	private void updateScrollbar(int mouseX, int mouseY, float par3)
+	{
+		boolean mouseDown = Mouse.isButtonDown(0);
+		int x = (this.width - this.xSize) / 2;
+		int y = (this.height - this.ySize) / 2;
+		int xScroll = x + 127;
+		int yScroll = y + 48;
+		int scrollWidth = xScroll + 14;
+		int scrollHeight = yScroll + 100;
+
+		if(!this.wasClicking && mouseDown && mouseX >= xScroll && mouseY >= yScroll && mouseX < scrollWidth && mouseY < scrollHeight)
+		{
+			this.isScrolling = true;
+		}
+
+		if(!mouseDown)
+		{
+			this.isScrolling = false;
+		}
+
+		if(wasClicking && !isScrolling && slotPos != prevSlotPos)
+		{
+			prevSlotPos = slotPos;
+		}
+
+		this.wasClicking = mouseDown;
+
+		if(this.isScrolling)
+		{
+			this.currentScroll = (mouseY - yScroll - 7.5F) / (scrollHeight - yScroll - 15.0F);
+
+			if(this.currentScroll < 0.0F)
+			{
+				this.currentScroll = 0.0F;
+			}
+
+			if(this.currentScroll > 1.0F)
+			{
+				this.currentScroll = 1.0F;
+			}
+
+			((ContainerPixelCondenser)this.inventorySlots).scrollTo(this.currentScroll);
+		}
 	}
 
 	@Override
@@ -117,5 +177,9 @@ public class GuiPixelCondenser extends GuiContainer
 		int k = (this.width - this.xSize) / 2;
 		int l = (this.height - this.ySize) / 2;
 		this.drawTexturedModalRect(k + 27, l + 10, 0, 0, 215, 245);
+
+		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+		this.mc.getTextureManager().bindTexture(pixelCondenserGuiTexture2);
+		this.drawTexturedModalRect(k + 127, (int)(l + 48 + 89 * currentScroll), 230, 0, 14, 15);
 	}
 }
