@@ -10,7 +10,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -67,6 +66,26 @@ public class PixelCondenser extends BlockContainer
         if (l == 3)
         {
         	world.setBlockMetadataWithNotify(x, y, z, 4, 2);
+        }
+        
+        if (l == 0)
+        {
+        	world.setBlockMetadataWithNotify(x, y, z, 2, 4);
+        }
+
+        if (l == 1)
+        {
+        	world.setBlockMetadataWithNotify(x, y, z, 5, 4);
+        }
+
+        if (l == 2)
+        {
+        	world.setBlockMetadataWithNotify(x, y, z, 3, 4);
+        }
+
+        if (l == 3)
+        {
+        	world.setBlockMetadataWithNotify(x, y, z, 4, 4);
         }
     }
 	
