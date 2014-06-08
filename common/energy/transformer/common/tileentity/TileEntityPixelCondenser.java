@@ -12,7 +12,7 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityPixelCondenser extends TileEntity implements IEPCContainer, IInventory
 {
-	private ItemStack[] inventory = new ItemStack[70];
+	private ItemStack[] inventory = new ItemStack[200];
 	private String customName;
 	private int storedEPC = 0;
 
