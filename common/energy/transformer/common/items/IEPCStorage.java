@@ -46,6 +46,14 @@ public interface IEPCStorage
 	public boolean canAddEPC(ItemStack stack, int amountOfEPC);
 
 	/**
+	 * Specifies if the storage is able to remove an amount of epc
+	 * 
+	 * @param stack
+	 * @param amountOfEPC
+	 */
+	public boolean canRemoveEPC(ItemStack stack, int amountOfEPC);
+
+	/**
 	 * Adds the specified amount of epc to the storage. Should be used with
 	 * {@link #canAddEPC(int)}
 	 * 
@@ -53,6 +61,15 @@ public interface IEPCStorage
 	 * @param amountOfEPC
 	 */
 	public void addToCurrentEPC(ItemStack stack, int amountOfEPC);
+
+	/**
+	 * Removes the specified amount of epc to the storage. Must be used with
+	 * {@link #canAddEPC(int)}
+	 * 
+	 * @param stack
+	 * @param amountOfEPC
+	 */
+	public void removeToCurrentEPC(ItemStack stack, int amountOfEPC);
 
 	/**
 	 * Sets the current epc value to the specified amount of epc

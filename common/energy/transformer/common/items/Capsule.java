@@ -147,4 +147,16 @@ public class Capsule extends EnergyTransformerGenericItem implements IEPCStorage
 
 	}
 
+	@Override
+	public boolean canRemoveEPC(ItemStack stack, int amountOfEPC)
+	{
+		return this.getCurrentEPC(stack) > 0;
+	}
+
+	@Override
+	public void removeToCurrentEPC(ItemStack stack, int amountOfEPC)
+	{
+		setCurrentEPC(stack, getCurrentEPC(stack) - amountOfEPC);
+	}
+
 }
