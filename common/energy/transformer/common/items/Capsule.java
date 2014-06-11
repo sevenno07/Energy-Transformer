@@ -38,7 +38,7 @@ public class Capsule extends EnergyTransformerGenericItem implements IEPCStorage
 
 	protected Capsule()
 	{
-		super();
+		super("capsule", "capsule");
 		this.setHasSubtypes(true);
 		this.maxStackSize = 1;
 	}
