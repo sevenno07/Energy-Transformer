@@ -21,11 +21,10 @@ import energy.transformer.common.tileentity.TileEntityPixelCondenser;
 
 public class PixelCondenser extends BlockContainer
 {
-
-	private IIcon PCIconTop;
-	private IIcon PCIconBot;
-	private IIcon PCIconFront;
-	private IIcon PCIconBack;
+	private IIcon pcIconTop;
+	private IIcon pcIconBot;
+	private IIcon pcIconFront;
+	private IIcon pcIconBack;
 
 	protected PixelCondenser()
 	{
@@ -42,7 +41,7 @@ public class PixelCondenser extends BlockContainer
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata)
 	{
-		return side == 1 ? this.PCIconTop : (side == 0 ? this.PCIconBot : (side == metadata ? this.PCIconFront : this.blockIcon));
+		return side == 1 ? this.pcIconTop : (side == 0 ? this.pcIconBot : (side == metadata ? this.pcIconFront : this.blockIcon));
 	}
 
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase Entity, ItemStack Item)
@@ -79,10 +78,10 @@ public class PixelCondenser extends BlockContainer
 	public void registerBlockIcons(IIconRegister register)
 	{
 		blockIcon = register.registerIcon("energy_transformer:pcblock_side");
-		PCIconTop = register.registerIcon("energy_transformer:pcblock_top");
-		PCIconBot = register.registerIcon("energy_transformer:pcblock_bot");
-		PCIconFront = register.registerIcon("energy_transformer:pcblock_front");
-		PCIconBack = register.registerIcon("energy_transformer:pcblock_back");
+		pcIconTop = register.registerIcon("energy_transformer:pcblock_top");
+		pcIconBot = register.registerIcon("energy_transformer:pcblock_bot");
+		pcIconFront = register.registerIcon("energy_transformer:pcblock_front");
+		pcIconBack = register.registerIcon("energy_transformer:pcblock_back");
 	}
 
 	@Override
