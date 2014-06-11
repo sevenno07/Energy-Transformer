@@ -61,7 +61,7 @@ public class EnergyTransformer
 
 		LOGGER.info("Loading items");
 		EnergyItemList.loadItems();
-		
+
 		LOGGER.info("Loading achievement list");
 		EnergyAchievementList.load();
 	}

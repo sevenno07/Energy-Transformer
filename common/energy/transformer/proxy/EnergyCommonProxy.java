@@ -4,6 +4,6 @@ public class EnergyCommonProxy
 {
 	public void registerRender()
 	{
-		
+
 	}
 }

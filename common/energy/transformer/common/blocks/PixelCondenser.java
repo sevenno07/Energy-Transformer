@@ -21,12 +21,12 @@ import energy.transformer.common.tileentity.TileEntityPixelCondenser;
 
 public class PixelCondenser extends BlockContainer
 {
-	
+
 	private IIcon PCIconTop;
 	private IIcon PCIconBot;
 	private IIcon PCIconFront;
 	private IIcon PCIconBack;
-	
+
 	protected PixelCondenser()
 	{
 		super(Material.rock);
@@ -38,42 +38,42 @@ public class PixelCondenser extends BlockContainer
 	{
 		return Item.getItemFromBlock(this);
 	}
-	
-    @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int side, int metadata)
-    {
-        return side == 1 ? this.PCIconTop : (side == 0 ? this.PCIconBot : (side == metadata ? this.PCIconFront : this.blockIcon));
-    }
-	
-    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase Entity, ItemStack Item)
-    {
-        int l = MathHelper.floor_double((double)(Entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 
-        if (l == 0)
-        {
-        	world.setBlockMetadataWithNotify(x, y, z, 2, 2);
-//        	world.setBlockMetadataWithNotify(x, y, z, 3, 2);
-        }
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(int side, int metadata)
+	{
+		return side == 1 ? this.PCIconTop : (side == 0 ? this.PCIconBot : (side == metadata ? this.PCIconFront : this.blockIcon));
+	}
 
-        if (l == 1)
-        {
-        	world.setBlockMetadataWithNotify(x, y, z, 5, 2);
-//        	world.setBlockMetadataWithNotify(x, y, z, 4, 2);
-        }
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase Entity, ItemStack Item)
+	{
+		int l = MathHelper.floor_double((double)(Entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 
-        if (l == 2)
-        {
-        	world.setBlockMetadataWithNotify(x, y, z, 3, 2);
-//        	world.setBlockMetadataWithNotify(x, y, z, 2, 2);
-        }
+		if(l == 0)
+		{
+			world.setBlockMetadataWithNotify(x, y, z, 2, 2);
+			// world.setBlockMetadataWithNotify(x, y, z, 3, 2);
+		}
 
-        if (l == 3)
-        {
-        	world.setBlockMetadataWithNotify(x, y, z, 4, 2);
-//        	world.setBlockMetadataWithNotify(x, y, z, 5, 2);
-        }
-    }
-	
+		if(l == 1)
+		{
+			world.setBlockMetadataWithNotify(x, y, z, 5, 2);
+			// world.setBlockMetadataWithNotify(x, y, z, 4, 2);
+		}
+
+		if(l == 2)
+		{
+			world.setBlockMetadataWithNotify(x, y, z, 3, 2);
+			// world.setBlockMetadataWithNotify(x, y, z, 2, 2);
+		}
+
+		if(l == 3)
+		{
+			world.setBlockMetadataWithNotify(x, y, z, 4, 2);
+			// world.setBlockMetadataWithNotify(x, y, z, 5, 2);
+		}
+	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister register)
@@ -84,7 +84,7 @@ public class PixelCondenser extends BlockContainer
 		PCIconFront = register.registerIcon("energy_transformer:pcblock_front");
 		PCIconBack = register.registerIcon("energy_transformer:pcblock_back");
 	}
-	
+
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_)
 	{

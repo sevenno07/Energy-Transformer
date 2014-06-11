@@ -1,9 +1,9 @@
 package energy.transformer.common.cables;
 
-import energy.transformer.common.blocks.EnergyTransformerGenericBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import energy.transformer.common.blocks.EnergyTransformerGenericBlock;
 
 public class EpcOutputCable extends EnergyTransformerGenericBlock
 {

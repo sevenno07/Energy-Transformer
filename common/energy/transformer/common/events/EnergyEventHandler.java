@@ -20,6 +20,6 @@ public class EnergyEventHandler
 
 	public void onTooltip(ItemTooltipEvent event)
 	{
-		//event.toolTip.add(arg0);
+		// event.toolTip.add(arg0);
 	}
 }

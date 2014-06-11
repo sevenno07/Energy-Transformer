@@ -15,7 +15,8 @@ public class GuiHandler implements IGuiHandler
 		TileEntity te = world.getTileEntity(x, y, z);
 		switch(ID)
 		{
-		case 0: return new ContainerPixelCondenser(player.inventory, (TileEntityPixelCondenser)te);
+		case 0:
+			return new ContainerPixelCondenser(player.inventory, (TileEntityPixelCondenser)te);
 		}
 		return null;
 	}
@@ -26,7 +27,8 @@ public class GuiHandler implements IGuiHandler
 		TileEntity te = world.getTileEntity(x, y, z);
 		switch(ID)
 		{
-		case 0: return new GuiPixelCondenser(player.inventory, (TileEntityPixelCondenser)te);
+		case 0:
+			return new GuiPixelCondenser(player.inventory, (TileEntityPixelCondenser)te);
 		}
 		return null;
 	}

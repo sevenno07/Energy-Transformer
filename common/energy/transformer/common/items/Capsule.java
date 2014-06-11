@@ -123,7 +123,8 @@ public class Capsule extends EnergyTransformerGenericItem implements IEPCStorage
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
 	{
-		// Example :[ Current EPC : ??? EPC out of ??? EPC ] (will be displayed without [])
+		// Example :[ Current EPC : ??? EPC out of ??? EPC ] (will be displayed
+		// without [])
 		list.clear();
 		list.add(EnumChatFormatting.RESET + "" + EnumChatFormatting.GRAY + StatCollector.translateToLocal("energytransformer.currentEPC") + " : " + EnumChatFormatting.WHITE + getCurrentEPC(stack) + " " + StatCollector.translateToLocal("energytransformer.EPC") + EnumChatFormatting.GRAY + StatCollector.translateToLocal("energytransformer.outOfEPC") + " " + EnumChatFormatting.WHITE + getMaximumEPC(stack) + StatCollector.translateToLocal("energytransformer.maximumEPC") + EnumChatFormatting.RESET);
 	}
@@ -158,5 +159,4 @@ public class Capsule extends EnergyTransformerGenericItem implements IEPCStorage
 	{
 		setCurrentEPC(stack, getCurrentEPC(stack) - amountOfEPC);
 	}
-
 }
