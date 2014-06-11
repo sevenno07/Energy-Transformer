@@ -2,3 +2,23 @@
 tile.pixel_condenser.name=Pixel Condenser
 #Container
 container.pixel_condenser=Pixel Condenser
+#CreativeTabs
+itemGroup.Blocks=Energy Transformer Blocks
+itemGroup.Items=Energy Transformer Items
+#Items
+item.capsule.epcCapsule1k.name= Capsule de 1k EPC
+item.capsule.epcCapsule2k.name= Capsule de 2k EPC
+item.capsule.epcCapsule5k.name= Capsule de 5k EPC
+item.capsule.epcCapsule10k.name= Capsule de 10k EPC
+item.capsule.epcCapsule20k.name= Capsule de 20k EPC
+item.capsule.epcCapsule50k.name= Capsule de 50k EPC
+item.capsule.epcCapsule100k.name= Capsule de 100k EPC
+item.capsule.epcCapsule200k.name= Capsule de 200k EPC
+item.capsule.epcCapsule500k.name= Capsule de 500k EPC
+item.capsule.epcCapsule1m.name= Capsule de 1m EPC
+item.capsule.epcCapsule2m.name= Capsule de 2m EPC
+item.capsule.epcCapsule5m.name= Capsule de 5m EPC
+item.capsule.epcCapsule10m.name= Capsule de 10m EPC
+item.capsule.epcCapsule20m.name= Capsule de 20m EPC
+item.capsule.epcCapsule50m.name= Capsule de 50m EPC
+item.capsule.epcCapsule100m.name= Capsule de 100m EPC

@@ -3,13 +3,14 @@ package energy.transformer.common.items;
 import java.util.List;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -32,7 +33,7 @@ public class Capsule extends EnergyTransformerGenericItem implements IEPCStorage
 	 */
 	private int[] epc = new int[] {1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000, 500000, 1000000, 2000000, 5000000, 10000000, 20000000, 50000000, 100000000};
 
-	private IIcon[] IconArray;
+	private IIcon[] iconArray;
 	private static final String NAME_NBT_MAX_EPC = "maximumEPC";
 	private static final String NAME_NBT_CURRENT_EPC = "currentEPC";
 
@@ -42,31 +43,40 @@ public class Capsule extends EnergyTransformerGenericItem implements IEPCStorage
 		this.setHasSubtypes(true);
 		this.maxStackSize = 1;
 	}
-
-	public int getMetadata(int metadata)
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
 	{
-		return metadata;
+		for(int i = 0; i < 16; ++i)
+		{
+			list.add(new ItemStack(item, 1, i));
+		}
 	}
-
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIconFromDamage(int icon)
+	{
+		int j = MathHelper.clamp_int(icon, 0, 15);
+		return this.iconArray[j];
+	}
+	
+	@Override
 	public void registerIcons(IIconRegister iconregister)
 	{
-		IconArray = new IIcon[type.length];
+		iconArray = new IIcon[type.length];
 		for(int i = 0; i < type.length; i++)
 		{
-			IconArray[i] = iconregister.registerIcon(EnergyTransformer.MODID + ":" + type[i]);
-
+			iconArray[i] = iconregister.registerIcon(EnergyTransformer.MODID + ":" + this.getIconString() + type[i]);
 		}
-
 	}
-
+	
+	@Override
 	public String getUnlocalizedName(ItemStack stack)
 	{
-		int metadata = stack.getItemDamage();
-		if(metadata > type.length || metadata < 0)
-		{
-			metadata = 0;
-		}
-		return super.getUnlocalizedName() + "." + type[metadata];
+		int i = MathHelper.clamp_int(stack.getItemDamage(), 0, 15);
+		return super.getUnlocalizedName() + "." + type[i];
 	}
 
 	@Override
@@ -105,7 +115,6 @@ public class Capsule extends EnergyTransformerGenericItem implements IEPCStorage
 		{
 			return 0;
 		}
-
 	}
 
 	@Override
@@ -125,8 +134,10 @@ public class Capsule extends EnergyTransformerGenericItem implements IEPCStorage
 	{
 		// Example :[ Current EPC : ??? EPC out of ??? EPC ] (will be displayed
 		// without [])
-		list.clear();
-		list.add(EnumChatFormatting.RESET + "" + EnumChatFormatting.GRAY + StatCollector.translateToLocal("energytransformer.currentEPC") + " : " + EnumChatFormatting.WHITE + getCurrentEPC(stack) + " " + StatCollector.translateToLocal("energytransformer.EPC") + EnumChatFormatting.GRAY + StatCollector.translateToLocal("energytransformer.outOfEPC") + " " + EnumChatFormatting.WHITE + getMaximumEPC(stack) + StatCollector.translateToLocal("energytransformer.maximumEPC") + EnumChatFormatting.RESET);
+		/* TODO Ceci retire le nom de la capsule dans l'inventaire
+		 * list.clear();
+		 * list.add(EnumChatFormatting.RESET + "" + EnumChatFormatting.GRAY + StatCollector.translateToLocal("energytransformer.currentEPC") + " : " + EnumChatFormatting.WHITE + getCurrentEPC(stack) + " " + StatCollector.translateToLocal("energytransformer.EPC") + EnumChatFormatting.GRAY + StatCollector.translateToLocal("energytransformer.outOfEPC") + " " + EnumChatFormatting.WHITE + getMaximumEPC(stack) + StatCollector.translateToLocal("energytransformer.maximumEPC") + EnumChatFormatting.RESET);
+		 */
 	}
 
 	@Override
@@ -145,7 +156,6 @@ public class Capsule extends EnergyTransformerGenericItem implements IEPCStorage
 	public void setCurrentEPC(ItemStack stack, int amountOfEPC)
 	{
 		stack.stackTagCompound.setInteger(NAME_NBT_CURRENT_EPC, amountOfEPC);
-
 	}
 
 	@Override
