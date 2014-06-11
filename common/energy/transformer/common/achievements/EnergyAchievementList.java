@@ -25,5 +25,4 @@ public class EnergyAchievementList
 	{
 		craftCapsule = new Achievement("EnergyTransformerCraftCapsule", "craftCapsule", 0, 0, new ItemStack(EnergyItemList.capsule, 1, 0), null).registerStat();
 	}
-
 }

@@ -112,7 +112,6 @@ public class TileEpcTransportCable extends TileEntity implements IEPCCable
 				epcQueried += nearbyCableEPCQueried[out];
 			}
 		}
-
 		this.executePreAction();
 
 		if(epcContained > 0)
@@ -131,9 +130,7 @@ public class TileEpcTransportCable extends TileEntity implements IEPCCable
 				}
 			}
 		}
-
 		this.executePostAction();
-
 	}
 
 	/**

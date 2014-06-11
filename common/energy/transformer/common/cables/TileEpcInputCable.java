@@ -15,5 +15,4 @@ public class TileEpcInputCable extends TileEpcTransportCable implements IEPCCabl
 			((IEPCContainer)te).setContainerEPC(((IEPCContainer)te).getContainerEPC() + epcUsed);
 		}
 	}
-
 }

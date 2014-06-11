@@ -7,7 +7,6 @@ import energy.transformer.common.blocks.EnergyTransformerGenericBlock;
 
 public class EpcTransportCable extends EnergyTransformerGenericBlock
 {
-
 	public EpcTransportCable()
 	{
 		super(Material.rock, "epcCable", "epc_cable");
