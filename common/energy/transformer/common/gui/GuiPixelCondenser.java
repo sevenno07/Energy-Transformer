@@ -45,6 +45,7 @@ public class GuiPixelCondenser extends GuiContainer
 	{
 		super.drawScreen(mouseX, mouseY, par3);
 		this.updateScrollbar(mouseX, mouseY, par3);
+		this.textField.drawTextBox();
 	}
 
 	private void updateScrollbar(int mouseX, int mouseY, float par3)
@@ -104,7 +105,7 @@ public class GuiPixelCondenser extends GuiContainer
 		this.buttonList.clear();
 		this.buttonList.add(this.convert = new GuiButton(0, x + 150, y + 20, 67, 20, "Convert"));
 
-		this.textField = new GuiTextField(this.fontRendererObj, x - 51, y + 92, 90, 12);
+		this.textField = new GuiTextField(this.fontRendererObj, x + 35, y + 85, 87, 10);
 		this.textField.setMaxStringLength(120);
 		this.textField.setCanLoseFocus(false);
 		this.textField.setFocused(true);
@@ -164,7 +165,6 @@ public class GuiPixelCondenser extends GuiContainer
 	{
 		this.fontRendererObj.drawString(this.pixelCondenser.hasCustomInventoryName() ? this.pixelCondenser.getInventoryName() : StatCollector.translateToLocal(this.pixelCondenser.getInventoryName()), 35, this.ySize - 241, 4210752);
 		this.fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 47, this.ySize - 102, 4210752);
-		this.textField.drawTextBox();
 	}
 
 	private int inventoryRows = 0;
