@@ -21,6 +21,8 @@ import energy.transformer.common.gui.GuiHandler;
 import energy.transformer.common.items.EnergyItemList;
 import energy.transformer.common.tileentity.EnergyTEList;
 import energy.transformer.proxy.EnergyCommonProxy;
+import energy.transformer.proxy.network.ChannelHandler;
+import energy.transformer.proxy.network.PacketHandler;
 
 /**
  * Main class of the mod Energy Transformer
@@ -77,6 +79,9 @@ public class EnergyTransformer
 
 		LOGGER.info("Registering GUI Handler");
 		NetworkRegistry.INSTANCE.registerGuiHandler(this.instance, new GuiHandler());
+		
+		LOGGER.info("Registering Packet");
+		//NetworkRegistry.INSTANCE.newChannel(this.MODID, new ChannelHandler(), new PacketHandler());
 	}
 
 	@EventHandler
