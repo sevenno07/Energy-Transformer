@@ -7,7 +7,7 @@ import energy.transformer.common.creativetabs.EnergyCTList;
 /**
  * Generic item class. Any item class from Energy Transformer extends this class
  * 
- * @author matthieu
+ * @author utybo
  * 
  */
 public class EnergyTransformerGenericItem extends Item
