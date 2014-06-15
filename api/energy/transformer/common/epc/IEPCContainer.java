@@ -1,4 +1,4 @@
-package energy.transformer.common.tileentity;
+package energy.transformer.common.epc;
 
 /**
  * Tile entities must implement this if they have an EPC Storage

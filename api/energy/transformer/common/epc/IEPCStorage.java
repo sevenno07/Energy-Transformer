@@ -1,4 +1,4 @@
-package energy.transformer.common.items;
+package energy.transformer.common.epc;
 
 import net.minecraft.item.ItemStack;
 

@@ -15,6 +15,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import energy.transformer.common.EnergyTransformer;
+import energy.transformer.common.epc.IEPCStorage;
 
 /**
  * Capsule class. Does not allow the creation of custom capsules though.<br/>

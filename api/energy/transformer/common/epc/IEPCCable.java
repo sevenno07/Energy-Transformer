@@ -1,4 +1,4 @@
-package energy.transformer.common.cables;
+package energy.transformer.common.epc;
 
 import net.minecraftforge.common.util.ForgeDirection;
 

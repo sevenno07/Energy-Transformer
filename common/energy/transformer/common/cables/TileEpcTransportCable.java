@@ -7,6 +7,7 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import energy.transformer.common.EnergyTransformer;
+import energy.transformer.common.epc.IEPCCable;
 import energy.transformer.common.utils.CableHelper;
 import energy.transformer.common.utils.DirectionHelper;
 

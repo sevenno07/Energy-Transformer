@@ -2,7 +2,7 @@ package energy.transformer.common.utils;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import energy.transformer.common.cables.IEPCCable;
+import energy.transformer.common.epc.IEPCCable;
 
 /**
  * Cable stuff, useful for getting cable values
