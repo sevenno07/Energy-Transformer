@@ -20,6 +20,7 @@ import energy.transformer.common.events.EnergyEventHandler;
 import energy.transformer.common.gui.GuiHandler;
 import energy.transformer.common.items.EnergyItemList;
 import energy.transformer.common.tileentity.EnergyTEList;
+import energy.transformer.common.woldgenerator.EnergyGenerator;
 import energy.transformer.proxy.EnergyCommonProxy;
 import energy.transformer.proxy.network.ChannelHandler;
 import energy.transformer.proxy.network.PacketHandler;
@@ -82,6 +83,9 @@ public class EnergyTransformer
 		
 		LOGGER.info("Registering Packet");
 		//NetworkRegistry.INSTANCE.newChannel(this.MODID, new ChannelHandler(), new PacketHandler());
+		
+		LOGGER.info("Loading world generator");
+		EnergyGenerator.loadGenerator();
 	}
 
 	@EventHandler
