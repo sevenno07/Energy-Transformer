@@ -1,10 +1,11 @@
 package energy.transformer.common.cables;
 
 import net.minecraft.tileentity.TileEntity;
+import energy.transformer.common.epc.IEPCCable;
 import energy.transformer.common.epc.IEPCContainer;
 import energy.transformer.common.utils.DirectionHelper;
 
-public class TileEpcOutputCable extends TileEpcTransportCable
+public class TileEpcOutputCable extends TileEpcTransportCable implements IEPCCable
 {
 	@Override
 	protected void executePostAction()

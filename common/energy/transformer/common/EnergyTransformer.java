@@ -82,6 +82,9 @@ public class EnergyTransformer
 		
 		LOGGER.info("Registering Packet");
 		//NetworkRegistry.INSTANCE.newChannel(this.MODID, new ChannelHandler(), new PacketHandler());
+		
+		LOGGER.info("Registering renders");
+		proxy.registerRender();
 	}
 
 	@EventHandler
