@@ -1,5 +1,7 @@
 package energy.transformer.common;
 
+import net.minecraftforge.common.config.Configuration;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,6 +16,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import energy.transformer.common.achievements.EnergyAchievementList;
 import energy.transformer.common.blocks.EnergyBlockList;
+import energy.transformer.common.configs.EnergyProperties;
 import energy.transformer.common.creativetabs.EnergyCTList;
 import energy.transformer.common.epc.EnergyEPCValuesList;
 import energy.transformer.common.events.EnergyEventHandler;
@@ -22,8 +25,6 @@ import energy.transformer.common.items.EnergyItemList;
 import energy.transformer.common.tileentity.EnergyTEList;
 import energy.transformer.common.woldgenerator.EnergyGenerator;
 import energy.transformer.proxy.EnergyCommonProxy;
-import energy.transformer.proxy.network.ChannelHandler;
-import energy.transformer.proxy.network.PacketHandler;
 
 /**
  * Main class of the mod Energy Transformer
@@ -56,6 +57,24 @@ public class EnergyTransformer
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
+		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
+		try
+		{
+			cfg.load();
+			EnergyProperties.dimensionID = cfg.get("Dimension", "Personal Dimension", 2).getInt();
+		}
+		catch(Exception ex)
+		{
+			LOGGER.fatal("Failed to load configuration!");
+		}
+		finally
+		{
+			if(cfg.hasChanged())
+			{
+				cfg.save();
+			}
+		}
+		
 		LOGGER.info("Loading creative tabs");
 		EnergyCTList.loadCreativeTabs();
 
@@ -86,6 +105,9 @@ public class EnergyTransformer
 		
 		LOGGER.info("Loading world generator");
 		EnergyGenerator.loadGenerator();
+		
+		LOGGER.info("Loading dimension");
+		EnergyGenerator.loadDimension();
 	}
 
 	@EventHandler
