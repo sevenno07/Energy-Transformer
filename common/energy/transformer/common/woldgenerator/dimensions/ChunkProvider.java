@@ -12,19 +12,19 @@ import net.minecraft.world.chunk.IChunkProvider;
 public class ChunkProvider implements IChunkProvider
 {
 	@Override
-	public boolean chunkExists(int var1, int var2)
+	public boolean chunkExists(int x, int y)
 	{
 		return false;
 	}
 
 	@Override
-	public Chunk provideChunk(int var1, int var2)
+	public Chunk provideChunk(int x, int y)
 	{
 		return null;
 	}
 
 	@Override
-	public Chunk loadChunk(int var1, int var2)
+	public Chunk loadChunk(int x, int y)
 	{
 		return null;
 	}
