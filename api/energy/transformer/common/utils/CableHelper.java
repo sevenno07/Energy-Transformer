@@ -13,25 +13,6 @@ import energy.transformer.common.epc.IEPCCable;
 public class CableHelper
 {
 	/**
-	 * Returns the query of a cable at coords x, y and z
-	 * 
-	 * @param world
-	 * @param x
-	 * @param y
-	 * @param z
-	 * @return The cable query
-	 */
-	public static int getCableEPC(World w, int x, int y, int z)
-	{
-		TileEntity te = w.getTileEntity(x, y, z);
-		if(te != null && te instanceof IEPCCable)
-		{
-			return ((IEPCCable)te).getContainedEPC();
-		}
-		return 0;
-	}
-
-	/**
 	 * Returns the cable's EPC
 	 * 
 	 * @param world
@@ -40,10 +21,29 @@ public class CableHelper
 	 * @param z
 	 * @return
 	 */
+	public static int getCableEPC(World w, int x, int y, int z)
+	{
+		TileEntity te = w.getTileEntity(x, y, z);
+		if(te instanceof IEPCCable)
+		{
+			return ((IEPCCable)te).getContainedEPC();
+		}
+		return 0;
+	}
+
+	/**
+	 * Returns the query of a cable at coords x, y and z
+	 * 
+	 * @param world
+	 * @param x
+	 * @param y
+	 * @param z
+	 * @return The cable query
+	 */
 	public static int getCableQuery(World w, int x, int y, int z)
 	{
 		TileEntity te = w.getTileEntity(x, y, z);
-		if(te != null && te instanceof IEPCCable)
+		if(te instanceof IEPCCable)
 		{
 			return ((IEPCCable)te).getQueriedEPC();
 		}
