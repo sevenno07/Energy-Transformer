@@ -20,6 +20,9 @@ public class EnergyItemList
 	public static void loadItems()
 	{
 		capsule = new Capsule();
+		upgrade = new Upgrade();
+		
 		GameRegistry.registerItem(capsule, "capsule");
+		GameRegistry.registerItem(upgrade, "upgrade");
 	}
 }
