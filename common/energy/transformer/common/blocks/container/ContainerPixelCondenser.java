@@ -9,6 +9,8 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import energy.transformer.common.blocks.container.slot.SlotCapsule;
+import energy.transformer.common.blocks.container.slot.SlotUpgrade;
 import energy.transformer.common.tileentity.TileEntityPixelCondenser;
 
 public class ContainerPixelCondenser extends Container
@@ -30,7 +32,7 @@ public class ContainerPixelCondenser extends Container
 
 		for(int i = 0; i < 3; i++)
 		{
-			this.addSlotToContainer(new Slot(te, i * 9 + 30, 51 + i * 20, 65));
+			this.addSlotToContainer(new SlotCapsule(te, i * 9 + 30, 51 + i * 20, 65));
 		}
 
 		for(int i = 0; i < 5; i++)
@@ -41,7 +43,7 @@ public class ContainerPixelCondenser extends Container
 			}
 		}
 
-		this.addSlotToContainer(new Slot(te, 40, 146, 94));
+		this.addSlotToContainer(new SlotUpgrade(te, 40, 146, 94));
 
 		this.bindPlayerInventory(inventory);
 
