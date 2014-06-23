@@ -69,7 +69,7 @@ public class Capsule extends EnergyTransformerGenericItem implements IEPCStorage
 		iconArray = new IIcon[type.length];
 		for(int i = 0; i < type.length; i++)
 		{
-			iconArray[i] = iconregister.registerIcon(EnergyTransformer.MODID + ":" + this.getIconString() + type[i]);
+			iconArray[i] = iconregister.registerIcon(EnergyTransformer.MODID + ":" + type[i]);
 		}
 	}
 	
