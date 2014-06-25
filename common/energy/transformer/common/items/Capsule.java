@@ -83,9 +83,7 @@ public class Capsule extends EnergyTransformerGenericItem implements IEPCStorage
 	@Override
 	public void onCreated(ItemStack stack, World world, EntityPlayer player)
 	{
-		stack.stackTagCompound = new NBTTagCompound();
-		stack.stackTagCompound.setInteger(NAME_NBT_CURRENT_EPC, 0);
-		stack.stackTagCompound.setInteger(NAME_NBT_MAX_EPC, getMaximumEPC(stack));
+		this.fixNullNBT(stack);
 	}
 
 	@Override
@@ -96,11 +94,11 @@ public class Capsule extends EnergyTransformerGenericItem implements IEPCStorage
 			// Make sure the current EPC amount is correct
 			if(getCurrentEPC(stack) > getCurrentEPC(stack))
 			{
-				stack.stackTagCompound.setInteger(NAME_NBT_CURRENT_EPC, this.getMaximumEPC(stack));
+				stack.stackTagCompound.setInteger("currentEPC", this.getMaximumEPC(stack));
 			}
 			if(getCurrentEPC(stack) < 0)
 			{
-				stack.stackTagCompound.setInteger(NAME_NBT_CURRENT_EPC, 0);
+				stack.stackTagCompound.setInteger("currentEPC", 0);
 			}
 		}
 	}
@@ -127,18 +125,14 @@ public class Capsule extends EnergyTransformerGenericItem implements IEPCStorage
 	@Override
 	public int getCurrentEPC(ItemStack stack)
 	{
-		return stack.stackTagCompound.getInteger(NAME_NBT_CURRENT_EPC);
+		if(stack.stackTagCompound == null)this.fixNullNBT(stack);
+		return stack.stackTagCompound.getInteger("currentEPC");
 	}
 
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
+	private void fixNullNBT(ItemStack stack)
 	{
-		// Example :[ Current EPC : ??? EPC out of ??? EPC ] (will be displayed
-		// without [])
-		/* TODO Ceci retire le nom de la capsule dans l'inventaire
-		 * list.clear();
-		 * list.add(EnumChatFormatting.RESET + "" + EnumChatFormatting.GRAY + StatCollector.translateToLocal("energytransformer.currentEPC") + " : " + EnumChatFormatting.WHITE + getCurrentEPC(stack) + " " + StatCollector.translateToLocal("energytransformer.EPC") + EnumChatFormatting.GRAY + StatCollector.translateToLocal("energytransformer.outOfEPC") + " " + EnumChatFormatting.WHITE + getMaximumEPC(stack) + StatCollector.translateToLocal("energytransformer.maximumEPC") + EnumChatFormatting.RESET);
-		 */
+		stack.stackTagCompound = new NBTTagCompound();
+		stack.stackTagCompound.setInteger("currentEPC", 0);
 	}
 
 	@Override
@@ -156,7 +150,7 @@ public class Capsule extends EnergyTransformerGenericItem implements IEPCStorage
 	@Override
 	public void setCurrentEPC(ItemStack stack, int amountOfEPC)
 	{
-		stack.stackTagCompound.setInteger(NAME_NBT_CURRENT_EPC, amountOfEPC);
+		stack.stackTagCompound.setInteger("currentEPC", amountOfEPC);
 	}
 
 	@Override
@@ -169,5 +163,11 @@ public class Capsule extends EnergyTransformerGenericItem implements IEPCStorage
 	public void removeToCurrentEPC(ItemStack stack, int amountOfEPC)
 	{
 		setCurrentEPC(stack, getCurrentEPC(stack) - amountOfEPC);
+	}
+
+	@Override
+	public boolean usesEnergyTransformerTootltipModel(ItemStack s)
+	{
+		return true;
 	}
 }

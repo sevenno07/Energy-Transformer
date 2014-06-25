@@ -1,7 +1,9 @@
 package energy.transformer.common.epc;
 
 import java.util.HashMap;
+import java.util.List;
 
+import energy.transformer.common.utils.UidUtils;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -13,7 +15,7 @@ import net.minecraft.item.ItemStack;
  */
 public class EPCDatabase
 {
-	private static HashMap epcDatabase = new HashMap();
+	private static HashMap<List, Integer> epcDatabase = new HashMap<List, Integer>();
 
 	/**
 	 * Sets the EPC value of an item stack
@@ -23,7 +25,7 @@ public class EPCDatabase
 	 */
 	public static void setEPCValue(ItemStack stack, int epc)
 	{
-		epcDatabase.put(new ItemStack(stack.getItem(), 1, stack.getItemDamage()), epc);
+		epcDatabase.put(UidUtils.getUID(new ItemStack(stack.getItem(), 1, stack.getItemDamage())), epc);
 	}
 
 	/**
@@ -35,7 +37,7 @@ public class EPCDatabase
 	 */
 	public static void setEPCValue(Item item, int epc, int metadata)
 	{
-		epcDatabase.put(new ItemStack(item, 1, metadata), epc);
+		epcDatabase.put(UidUtils.getUID(new ItemStack(item, 1, metadata)), epc);
 	}
 
 	/**
@@ -46,7 +48,7 @@ public class EPCDatabase
 	 */
 	public static void setEPCValue(Item item, int epc)
 	{
-		epcDatabase.put(new ItemStack(item, 1, 0), epc);
+		setEPCValue(item, epc, 0);
 	}
 
 	/**
@@ -58,7 +60,7 @@ public class EPCDatabase
 	 */
 	public static void setEPCValue(Block block, int epc, int metadata)
 	{
-		epcDatabase.put(new ItemStack(Item.getItemFromBlock(block), 1, metadata), epc);
+		epcDatabase.put(UidUtils.getUID(new ItemStack(block, 1, metadata)), epc);
 	}
 
 	/**
@@ -69,7 +71,7 @@ public class EPCDatabase
 	 */
 	public static void setEPCValue(Block block, int epc)
 	{
-		epcDatabase.put(new ItemStack(Item.getItemFromBlock(block), 1, 0), epc);
+		setEPCValue(block, epc, 0);
 	}
 
 	/**
@@ -80,14 +82,14 @@ public class EPCDatabase
 	 */
 	public static int getEPCValue(ItemStack stack)
 	{
-		Object l = epcDatabase.get(new ItemStack(stack.getItem(), 1, stack.getItemDamage()));
-		if(l == null || (Integer)l < 0)
+		Integer l = epcDatabase.get(UidUtils.getUID(new ItemStack(stack.getItem(), 1, stack.getItemDamage())));
+		if(l == null || l <= 0)
 		{
 			return 0;
 		}
 		else
 		{
-			return (Integer)l;
+			return l;
 		}
 	}
 
@@ -100,14 +102,14 @@ public class EPCDatabase
 	 */
 	public static int getEPCValue(Item item, int metadata)
 	{
-		Object l = epcDatabase.get(new ItemStack(item, 1, metadata));
-		if(l == null || (Integer)l < 0)
+		Integer l = epcDatabase.get(UidUtils.getUID(new ItemStack(item, 1, metadata)));
+		if(l == null || l <= 0)
 		{
 			return 0;
 		}
 		else
 		{
-			return (Integer)l;
+			return l;
 		}
 	}
 
@@ -120,14 +122,14 @@ public class EPCDatabase
 	 */
 	public static int getEPCValue(Block block, int metadata)
 	{
-		Object l = epcDatabase.get(new ItemStack(Item.getItemFromBlock(block), 1, metadata));
-		if(l == null || (Integer)l < 0)
+		Integer l = epcDatabase.get(UidUtils.getUID(new ItemStack(Item.getItemFromBlock(block), 1, metadata)));
+		if(l == null || l <= 0)
 		{
 			return 0;
 		}
 		else
 		{
-			return (Integer)l;
+			return l;
 		}
 	}
 }

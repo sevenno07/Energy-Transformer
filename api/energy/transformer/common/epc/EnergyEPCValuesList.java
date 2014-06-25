@@ -1,6 +1,5 @@
 package energy.transformer.common.epc;
 
-import energy.transformer.common.blocks.EnergyBlockList;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -20,7 +19,6 @@ public class EnergyEPCValuesList
 	public static void loadEPCValues()
 	{
 		loadVanillaEPCValues();
-		loadEnergyTransformerEPCValues();
 	}
 
 	/**
@@ -183,13 +181,6 @@ public class EnergyEPCValuesList
 		EPCDatabase.setEPCValue(Items.diamond_chestplate, 65536);
 	}
 	
-	/**
-	 * Loads ET's EPC values
-	 */
-	private static void loadEnergyTransformerEPCValues()
-	{
-		EPCDatabase.setEPCValue(EnergyBlockList.pixelCondenser, 42011);
-	}
 
 	private static void setBlockMetaEPCValue(Block block, int epc, int maximumMetadata)
 	{

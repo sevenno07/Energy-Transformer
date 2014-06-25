@@ -7,6 +7,8 @@ import net.minecraft.item.ItemStack;
  * Please note that <strong>implementing this interface does not set <i>any</i>
  * EPC value</strong>
  * 
+ * Another thing : The game may crash thanks to weird NBT issues. See the Capsule from ET to see how to fix it.
+ * 
  * @author utybo
  * 
  */
@@ -18,7 +20,7 @@ public interface IEPCStorage
 	 * @param metadata
 	 * @return The maximum amount of EPC that can be stored in the capsule (or 0
 	 *         in case of unknown metadata, not needed if the item does not have
-	 *         metadatas)
+	 *         any metadata)
 	 */
 	public int getMaximumEPC(int metadata);
 
@@ -78,4 +80,10 @@ public interface IEPCStorage
 	 * @param amountOfEPC
 	 */
 	public void setCurrentEPC(ItemStack stack, int amountOfEPC);
+
+	/**
+	 * This method is used by ET to define whether the capsule uses ET's default
+	 * Capsule Tootltip or not
+	 */
+	public boolean usesEnergyTransformerTootltipModel(ItemStack stack);
 }

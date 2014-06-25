@@ -1,5 +1,7 @@
 package energy.transformer.common;
 
+import net.minecraftforge.common.MinecraftForge;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,13 +18,12 @@ import energy.transformer.common.achievements.EnergyAchievementList;
 import energy.transformer.common.blocks.EnergyBlockList;
 import energy.transformer.common.creativetabs.EnergyCTList;
 import energy.transformer.common.epc.EnergyEPCValuesList;
+import energy.transformer.common.epc.EnergyModsEPCValuesList;
 import energy.transformer.common.events.EnergyEventHandler;
 import energy.transformer.common.gui.GuiHandler;
 import energy.transformer.common.items.EnergyItemList;
 import energy.transformer.common.tileentity.EnergyTEList;
 import energy.transformer.proxy.EnergyCommonProxy;
-import energy.transformer.proxy.network.ChannelHandler;
-import energy.transformer.proxy.network.PacketHandler;
 
 /**
  * Main class of the mod Energy Transformer
@@ -71,8 +72,11 @@ public class EnergyTransformer
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		LOGGER.info("Registering Event Handler");
+		LOGGER.info("Registering Event Handler for FML");
 		FMLCommonHandler.instance().bus().register(new EnergyEventHandler());
+		
+		LOGGER.info("Registering Event Handler for MinecraftForge");
+		MinecraftForge.EVENT_BUS.register(new EnergyEventHandler());
 
 		LOGGER.info("Loading tile entities");
 		EnergyTEList.loadTileEntity();
@@ -92,5 +96,7 @@ public class EnergyTransformer
 	{
 		LOGGER.info("Loading EPC values");
 		EnergyEPCValuesList.loadEPCValues();
+		EnergyModsEPCValuesList.loadEPCValues();
+
 	}
 }
