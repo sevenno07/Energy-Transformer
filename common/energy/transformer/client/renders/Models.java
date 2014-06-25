@@ -9,11 +9,12 @@ import energy.transformer.common.EnergyTransformer;
 
 public final class Models
 {
+	/*
 	public static final float bottom = 0F;
 	public static final float top = 1F;
 	public static final float thicknessA = 0.35F;
 	public static final float containerLinkSizeA = 0.15F;
-	public static final float linkThicknessA = 0.3F;
+	public static final float linkThicknessA = 0.325F;
 	public static final float linkThicknessB = top - linkThicknessA;
 	public static final float thicknessB = top - thicknessA;
 	public static final float containerLinkSizeB = top - containerLinkSizeA;
@@ -261,5 +262,5 @@ public final class Models
 		}
 			break;
 		}
-	}
+	}*/
 }

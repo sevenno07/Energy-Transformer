@@ -7,7 +7,7 @@ import net.minecraft.init.Blocks;
 
 public final class InventoryModels
 {
-
+	/*
 	public static void renderInputCable(Block block, int metadata, int modelId, RenderBlocks renderer)
 	{
 		renderer.setOverrideBlockTexture(renderer.getBlockIcon(Blocks.obsidian));
@@ -56,6 +56,6 @@ public final class InventoryModels
 		renderer.setRenderBounds(Models.thicknessA, Models.thicknessA, Models.thicknessB, Models.thicknessB, Models.thicknessB, Models.top);
 		ModelHelper.renderNormalInventory(renderer, block, metadata);
 		renderer.clearOverrideBlockTexture();
-	}
+	}*/
 
 }

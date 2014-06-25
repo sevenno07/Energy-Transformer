@@ -13,13 +13,14 @@ public class RenderOutputCable implements ISimpleBlockRenderingHandler
 
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelId, RenderBlocks renderer)
-	{
-		InventoryModels.renderOutputCable(block, metadata, modelId, renderer);
+	{/*
+		InventoryModels.renderOutputCable(block, metadata, modelId, renderer);*/
 	}
 
 	@Override
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer)
 	{
+		/*
 		Models.renderOutputCable(world, x, y, z, block, renderer);
 		for(ForgeDirection direction : ForgeDirection.VALID_DIRECTIONS)
 		{
@@ -27,7 +28,7 @@ public class RenderOutputCable implements ISimpleBlockRenderingHandler
 				Models.renderNormalSideCable(world, x, y, z, block, renderer, direction);
 			if(ModelHelper.canConnectWithSideEPCContainer(world, x, y, z, direction))
 				Models.renderOutputSideCable(world, x, y, z, block, renderer, direction);
-		}
+		}*/
 		return true;
 	}
 
