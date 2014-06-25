@@ -11,14 +11,14 @@ public final class InventoryModels
 	public static void renderInputCable(Block block, int metadata, int modelId, RenderBlocks renderer)
 	{
 		renderer.setOverrideBlockTexture(renderer.getBlockIcon(Blocks.obsidian));
-		renderer.setRenderBounds(Models.thicknessA, Models.thicknessA, Models.thicknessA, Models.thicknessB, Models.thicknessB, Models.thicknessB);
+		renderer.setRenderBounds(Models.linkThicknessA, Models.linkThicknessA, Models.linkThicknessA, Models.linkThicknessB, Models.linkThicknessB, Models.linkThicknessB);
 		ModelHelper.renderNormalInventory(renderer, block, metadata);
 		renderer.clearOverrideBlockTexture();
 		renderer.setOverrideBlockTexture(renderer.getBlockIcon(Blocks.iron_block));
-		renderer.setRenderBounds(Models.thicknessB, Models.thicknessA, Models.thicknessA, Models.thicknessA, Models.thicknessB, Models.containerLinkThicknessA);
+		renderer.setRenderBounds(Models.thicknessB, Models.thicknessA, Models.thicknessA, Models.thicknessA, Models.thicknessB, Models.containerLinkSizeA);
 		ModelHelper.renderNormalInventory(renderer, block, metadata);
 		renderer.setOverrideBlockTexture(renderer.getBlockIcon(Blocks.obsidian));
-		renderer.setRenderBounds(Models.thicknessB, Models.thicknessA, Models.containerLinkThicknessA, Models.thicknessA, Models.thicknessB, Models.bottom);
+		renderer.setRenderBounds(Models.linkThicknessB, Models.linkThicknessA, Models.containerLinkSizeA, Models.linkThicknessA, Models.linkThicknessB, Models.bottom);
 		ModelHelper.renderNormalInventory(renderer, block, metadata);
 		renderer.clearOverrideBlockTexture();
 		renderer.setOverrideBlockTexture(renderer.getBlockIcon(Blocks.iron_block));
@@ -30,14 +30,14 @@ public final class InventoryModels
 	public static void renderOutputCable(Block block, int metadata, int modelId, RenderBlocks renderer)
 	{
 		renderer.setOverrideBlockTexture(renderer.getBlockIcon(Blocks.lapis_block));
-		renderer.setRenderBounds(Models.thicknessA, Models.thicknessA, Models.thicknessA, Models.thicknessB, Models.thicknessB, Models.thicknessB);
+		renderer.setRenderBounds(Models.linkThicknessA, Models.linkThicknessA, Models.linkThicknessA, Models.linkThicknessB, Models.linkThicknessB, Models.linkThicknessB);
 		ModelHelper.renderNormalInventory(renderer, block, metadata);
 		renderer.clearOverrideBlockTexture();
 		renderer.setOverrideBlockTexture(renderer.getBlockIcon(Blocks.iron_block));
-		renderer.setRenderBounds(Models.thicknessB, Models.thicknessA, Models.thicknessA, Models.thicknessA, Models.thicknessB, Models.containerLinkThicknessA);
+		renderer.setRenderBounds(Models.thicknessB, Models.thicknessA, Models.thicknessA, Models.thicknessA, Models.thicknessB, Models.containerLinkSizeA);
 		ModelHelper.renderNormalInventory(renderer, block, metadata);
 		renderer.setOverrideBlockTexture(renderer.getBlockIcon(Blocks.lapis_block));
-		renderer.setRenderBounds(Models.thicknessB, Models.thicknessA, Models.containerLinkThicknessA, Models.thicknessA, Models.thicknessB, Models.bottom);
+		renderer.setRenderBounds(Models.linkThicknessB, Models.linkThicknessA, Models.containerLinkSizeA, Models.linkThicknessA, Models.linkThicknessB, Models.bottom);
 		ModelHelper.renderNormalInventory(renderer, block, metadata);
 		renderer.clearOverrideBlockTexture();
 		renderer.setOverrideBlockTexture(renderer.getBlockIcon(Blocks.iron_block));
