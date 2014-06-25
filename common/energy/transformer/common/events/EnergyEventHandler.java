@@ -28,7 +28,6 @@ public class EnergyEventHandler
 		ItemStack stack = event.itemStack;
 		Item item = stack.getItem();
 		if(stack != null)
-
 		{
 			if(item instanceof IEPCStorage)
 			{

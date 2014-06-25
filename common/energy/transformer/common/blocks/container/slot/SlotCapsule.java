@@ -3,7 +3,7 @@ package energy.transformer.common.blocks.container.slot;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import energy.transformer.common.items.EnergyItemList;
+import energy.transformer.common.epc.IEPCStorage;
 
 public class SlotCapsule extends Slot
 {
@@ -15,7 +15,7 @@ public class SlotCapsule extends Slot
 	@Override
 	public boolean isItemValid(ItemStack stack)
 	{
-		return stack.getItem() != null && stack.getItem() == EnergyItemList.capsule;
+		return stack.getItem() != null && stack.getItem() instanceof IEPCStorage;
 	}
 
 	@Override
