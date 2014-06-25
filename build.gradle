@@ -31,12 +31,16 @@ minecraft {
 sourceSets {
 	main {
 		java {
-				srcDirs 'common'
-				srcDirs 'api'
+			srcDirs 'common'
 		}
 		resources {
-				srcDirs 'ressources'
+			srcDirs 'ressources'
 		}
+	}
+	api {
+		java {
+			srcDirs 'api'
+		}	
 	}
 }
 
@@ -61,8 +65,14 @@ processResources
 }
 
 jar {
+	from sourceSets.api.output
 	appendix = 'universal'
 	version = "${project.version}-mc${project.minecraft.version}"
+}
+
+javadoc {
+	source += sourceSets.api.allSource
+	source -= sourceSets.main.allSource
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
@@ -73,13 +83,21 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 
 task deobfJar(type: Jar) {
     from sourceSets.main.output
+	from sourceSets.api.output
     appendix = 'deobf-dev'
     version = "${project.version}-mc${project.minecraft.version}"
 }
 
-build.dependsOn javadocJar, deobfJar
+task apiJar(type: Jar) {
+	from sourceSets.api.output
+	appendix = 'api'
+	version = "${project.version}-mc${project.minecraft.version}"
+}
+
+build.dependsOn javadocJar, deobfJar, apiJar
 
 artifacts {
     archives deobfJar
     archives javadocJar
+	archives apiJar
 }
