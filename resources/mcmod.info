@@ -1,0 +1,17 @@
+[
+{
+  "modid": "Energy_Transformer",
+  "name": "Energy-Transformer",
+  "description": "",
+  "version": "${version}",
+  "credits": "",
+  "logoFile": "assets/energy_transformer/logo.png",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": [ "sevenno07", "Superloup10", "utybo" ],
+  "parent":"",
+  "screenshots": [],
+  "dependencies": []
+}
+]
