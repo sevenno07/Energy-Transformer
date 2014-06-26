@@ -1,4 +1,4 @@
-package energy.transformer.proxy;
+package energy.transformer.client.renders;
 
 import java.util.HashMap;
 
@@ -6,7 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
-import energy.transformer.client.renders.IInventoryRender;
+import energy.transformer.proxy.EnergyClientProxy;
 
 public class TESRInventoryRenderer implements ISimpleBlockRenderingHandler
 {
@@ -44,7 +44,11 @@ public class TESRInventoryRenderer implements ISimpleBlockRenderingHandler
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelId, RenderBlocks renderer)
 	{
-
+		TESRIndex index = new TESRIndex(block, metadata);
+		if(blockByTESR.containsKey(index))
+		{
+			blockByTESR.get(index).renderInventory(-0.5, -0.5, -0.5);
+		}
 	}
 
 	@Override

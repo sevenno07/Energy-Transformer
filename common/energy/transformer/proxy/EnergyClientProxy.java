@@ -5,6 +5,10 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 import energy.transformer.client.renders.RenderInputCable;
 import energy.transformer.client.renders.RenderNormalCable;
 import energy.transformer.client.renders.RenderOutputCable;
+import energy.transformer.client.renders.TESRInventoryRenderer;
+import energy.transformer.client.renders.TileEntityCableRender;
+import energy.transformer.client.renders.TESRInventoryRenderer.TESRIndex;
+import energy.transformer.common.blocks.EnergyBlockList;
 import energy.transformer.common.cables.TileEpcTransportCable;
 
 public class EnergyClientProxy extends EnergyCommonProxy
@@ -28,5 +32,6 @@ public class EnergyClientProxy extends EnergyCommonProxy
 		RenderingRegistry.registerBlockHandler(new TESRInventoryRenderer());
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEpcTransportCable.class, new TileEntityCableRender());
+		TESRInventoryRenderer.blockByTESR.put(new TESRIndex(EnergyBlockList.epcCable, 0), new TileEntityCableRender());
 	}
 }
