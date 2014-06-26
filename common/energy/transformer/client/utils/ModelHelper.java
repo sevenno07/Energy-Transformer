@@ -3,31 +3,11 @@ package energy.transformer.client.utils;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.world.IBlockAccess;
-import net.minecraftforge.common.util.ForgeDirection;
 
 import org.lwjgl.opengl.GL11;
 
-import energy.transformer.api.epc.IEPCCable;
-import energy.transformer.api.epc.IEPCContainer;
-
 public class ModelHelper
 {
-
-	public static boolean canConnectWithSideCable(IBlockAccess world, int x, int y, int z, ForgeDirection d)
-	{
-		if(world.getTileEntity(x + d.offsetX, y + d.offsetY, z + d.offsetZ) instanceof IEPCCable)
-			return true;
-		return false;
-	}
-
-	public static boolean canConnectWithSideEPCContainer(IBlockAccess world, int x, int y, int z, ForgeDirection d)
-	{
-		if(world.getTileEntity(x + d.offsetX, y + d.offsetY, z + d.offsetZ) instanceof IEPCContainer)
-			return true;
-		return false;
-	}
-
 	public static void renderNormalInventory(RenderBlocks renderer, Block block, int metadata)
 	{
 		Tessellator tessellator = Tessellator.instance;

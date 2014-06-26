@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.util.ForgeDirection;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
-import energy.transformer.client.utils.ModelHelper;
+import energy.transformer.common.utils.CableHelper;
 import energy.transformer.proxy.EnergyClientProxy;
 
 public class RenderOutputCable implements ISimpleBlockRenderingHandler
@@ -23,9 +23,9 @@ public class RenderOutputCable implements ISimpleBlockRenderingHandler
 		Models.renderOutputCable(world, x, y, z, block, renderer);
 		for(ForgeDirection direction : ForgeDirection.VALID_DIRECTIONS)
 		{
-			if(ModelHelper.canConnectWithSideCable(world, x, y, z, direction))
+			if(CableHelper.canConnectWithSideCable(world, x, y, z, direction))
 				Models.renderNormalSideCable(world, x, y, z, block, renderer, direction);
-			if(ModelHelper.canConnectWithSideEPCContainer(world, x, y, z, direction))
+			if(CableHelper.canConnectWithSideEPCContainer(world, x, y, z, direction))
 				Models.renderOutputSideCable(world, x, y, z, block, renderer, direction);
 		}
 		return true;

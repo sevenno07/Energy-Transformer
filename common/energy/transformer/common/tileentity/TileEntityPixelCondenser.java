@@ -2,6 +2,7 @@ package energy.transformer.common.tileentity;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -9,9 +10,12 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import energy.transformer.api.epc.EnumActionType;
 import energy.transformer.api.epc.IEPCContainer;
+import energy.transformer.api.epc.IUpgrade;
+import energy.transformer.api.epc.IUpgradeListener;
 
-public class TileEntityPixelCondenser extends TileEntity implements IEPCContainer, IInventory
+public class TileEntityPixelCondenser extends TileEntity implements IEPCContainer, IInventory, IUpgradeListener
 {
 	private ItemStack[] inventory = new ItemStack[200];
 	private String customName;
@@ -215,5 +219,17 @@ public class TileEntityPixelCondenser extends TileEntity implements IEPCContaine
 	public boolean isItemValidForSlot(int slot, ItemStack stack)
 	{
 		return true;
+	}
+
+	@Override
+	public boolean hasUpgrade(EnumActionType type)
+	{
+		ItemStack stackInSlot = this.getStackInSlot(40);
+		Item stackItem = stackInSlot.getItem();
+		if(this.getStackInSlot(40).getItem() instanceof IUpgrade)
+		{
+			return ((IUpgrade)stackItem).getPassiveAction(stackInSlot).getType() == type;
+		}
+		return false;
 	}
 }
