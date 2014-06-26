@@ -68,5 +68,4 @@ public class TESRInventoryRenderer implements ISimpleBlockRenderingHandler
 	{
 		return EnergyClientProxy.tesrrender;
 	}
-
 }

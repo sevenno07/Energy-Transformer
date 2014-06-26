@@ -46,7 +46,7 @@ public class EpcTransportCable extends EnergyTransformerGenericBlock
 	@Override
 	public int getRenderType()
 	{
-		return EnergyClientProxy.renderCableID;
+		return EnergyClientProxy.tesrrender;
 	}
 
 	@SideOnly(Side.CLIENT)

@@ -46,7 +46,7 @@ public class EpcInputCable extends EnergyTransformerGenericBlock
 	@SideOnly(Side.CLIENT)
 	public int getRenderType()
 	{
-		return EnergyClientProxy.renderInputCableID;
+		return EnergyClientProxy.tesrrender;
 	}
 
 	@Override
@@ -55,12 +55,11 @@ public class EpcInputCable extends EnergyTransformerGenericBlock
 	{
 		return true;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata)
 	{
 		return Blocks.iron_block.getIcon(0, 0);
 	}
-
 }

@@ -10,7 +10,6 @@ import energy.transformer.proxy.EnergyClientProxy;
 
 public class RenderOutputCable implements ISimpleBlockRenderingHandler
 {
-
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelId, RenderBlocks renderer)
 	{/*
@@ -43,5 +42,4 @@ public class RenderOutputCable implements ISimpleBlockRenderingHandler
 	{
 		return EnergyClientProxy.renderOutputCableID;
 	}
-
 }

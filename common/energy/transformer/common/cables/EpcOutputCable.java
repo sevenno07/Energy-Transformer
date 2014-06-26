@@ -46,16 +46,16 @@ public class EpcOutputCable extends EnergyTransformerGenericBlock
 	@SideOnly(Side.CLIENT)
 	public int getRenderType()
 	{
-		return EnergyClientProxy.renderOutputCableID;
+		return EnergyClientProxy.tesrrender;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean shouldSideBeRendered(IBlockAccess blockAccess, int x, int y, int z, int side)
 	{
 		return true;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata)
