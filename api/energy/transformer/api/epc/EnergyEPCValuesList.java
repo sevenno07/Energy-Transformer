@@ -1,4 +1,4 @@
-package energy.transformer.common.epc;
+package energy.transformer.api.epc;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;

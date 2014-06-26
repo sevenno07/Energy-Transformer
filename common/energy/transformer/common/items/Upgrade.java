@@ -1,8 +1,8 @@
 package energy.transformer.common.items;
 
-import energy.transformer.common.epc.EnumActionType;
-import energy.transformer.common.epc.IUpgrade;
-import energy.transformer.common.epc.UpgradeAction;
+import energy.transformer.api.epc.EnumActionType;
+import energy.transformer.api.epc.IUpgrade;
+import energy.transformer.api.epc.UpgradeAction;
 
 public class Upgrade extends EnergyTransformerGenericItem implements IUpgrade
 {

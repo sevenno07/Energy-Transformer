@@ -6,9 +6,9 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
+import energy.transformer.api.epc.EPCDatabase;
+import energy.transformer.api.epc.IEPCStorage;
 import energy.transformer.common.achievements.EnergyAchievementList;
-import energy.transformer.common.epc.EPCDatabase;
-import energy.transformer.common.epc.IEPCStorage;
 import energy.transformer.common.items.EnergyItemList;
 
 public class EnergyEventHandler

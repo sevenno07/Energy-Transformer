@@ -1,8 +1,8 @@
-package energy.transformer.common.utils;
+package energy.transformer.api.utils;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import energy.transformer.common.epc.IEPCCable;
+import energy.transformer.api.epc.IEPCCable;
 
 /**
  * Cable stuff, useful for getting cable values

@@ -1,4 +1,4 @@
-package energy.transformer.common.utils;
+package energy.transformer.api.utils;
 
 import java.util.Arrays;
 import java.util.List;

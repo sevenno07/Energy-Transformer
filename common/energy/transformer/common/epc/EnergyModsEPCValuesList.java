@@ -1,5 +1,6 @@
 package energy.transformer.common.epc;
 
+import energy.transformer.api.epc.EPCDatabase;
 import energy.transformer.common.blocks.EnergyBlockList;
 
 public class EnergyModsEPCValuesList

@@ -1,4 +1,4 @@
-package energy.transformer.common.utils;
+package energy.transformer.api.utils;
 
 import net.minecraftforge.common.util.ForgeDirection;
 

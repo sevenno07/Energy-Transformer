@@ -8,8 +8,8 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 import org.lwjgl.opengl.GL11;
 
-import energy.transformer.common.epc.IEPCCable;
-import energy.transformer.common.epc.IEPCContainer;
+import energy.transformer.api.epc.IEPCCable;
+import energy.transformer.api.epc.IEPCContainer;
 
 public class ModelHelper
 {

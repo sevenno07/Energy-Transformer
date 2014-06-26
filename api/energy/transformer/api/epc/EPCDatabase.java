@@ -1,9 +1,9 @@
-package energy.transformer.common.epc;
+package energy.transformer.api.epc;
 
 import java.util.HashMap;
 import java.util.List;
 
-import energy.transformer.common.utils.UidUtils;
+import energy.transformer.api.utils.UidUtils;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

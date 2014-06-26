@@ -9,7 +9,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import energy.transformer.common.epc.IEPCContainer;
+import energy.transformer.api.epc.IEPCContainer;
 
 public class TileEntityPixelCondenser extends TileEntity implements IEPCContainer, IInventory
 {

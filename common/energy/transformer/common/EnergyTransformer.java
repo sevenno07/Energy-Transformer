@@ -14,10 +14,10 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import energy.transformer.api.epc.EnergyEPCValuesList;
 import energy.transformer.common.achievements.EnergyAchievementList;
 import energy.transformer.common.blocks.EnergyBlockList;
 import energy.transformer.common.creativetabs.EnergyCTList;
-import energy.transformer.common.epc.EnergyEPCValuesList;
 import energy.transformer.common.epc.EnergyModsEPCValuesList;
 import energy.transformer.common.events.EnergyEventHandler;
 import energy.transformer.common.gui.GuiHandler;
@@ -28,10 +28,10 @@ import energy.transformer.proxy.EnergyCommonProxy;
 /**
  * Main class of the mod Energy Transformer
  * 
- * @author sevenno07 ]:), Superloup10, utybo
+ * @author sevenno07, Superloup10, utybo
  * 
  */
-@Mod(modid = EnergyTransformer.MODID, name = "Energy-Transformer", version = "@VERSION@")
+@Mod(modid = EnergyTransformer.MODID, name = "Energy-Transformer", version = "@VERSION@", acceptedMinecraftVersions = "[1.7.2, 1.7.10]")
 public class EnergyTransformer
 {
 	/**

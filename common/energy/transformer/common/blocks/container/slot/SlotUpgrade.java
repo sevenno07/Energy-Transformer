@@ -3,7 +3,7 @@ package energy.transformer.common.blocks.container.slot;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import energy.transformer.common.epc.IUpgrade;
+import energy.transformer.api.epc.IUpgrade;
 
 public class SlotUpgrade extends Slot
 {

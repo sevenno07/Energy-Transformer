@@ -1,4 +1,4 @@
-package energy.transformer.common.epc;
+package energy.transformer.api.epc;
 
 import net.minecraftforge.common.util.ForgeDirection;
 
