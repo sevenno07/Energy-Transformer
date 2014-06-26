@@ -50,10 +50,10 @@ public class TileEntityCableRender extends TileEntitySpecialRenderer implements 
 			this.renderTileEpcTransportCableRotateAt((TileEpcTransportCable)te, x, y, z, scale, 0F);
 		if(tileEntity.render[5])
 			this.renderTileEpcTransportCableRotateAt((TileEpcTransportCable)te, x, y, z, scale, 0F);
-		if(tileEntity.render[6])
-			this.renderTileEpcTransportCableRotateAt((TileEpcTransportCable)te, x, y, z, scale, 0F);
+		/*if(tileEntity.render[6])
+			//this.renderTileEpcTransportCableRotateAt((TileEpcTransportCable)te, x, y, z, scale, 0F);
 		if(tileEntity.render[7])
-			this.renderTileEpcTransportCableRotateAt((TileEpcTransportCable)te, x, y, z, scale, 0F);
+			//this.renderTileEpcTransportCableRotateAt((TileEpcTransportCable)te, x, y, z, scale, 0F);*/
 		this.renderTileEpcTransportCableBaseAt((TileEpcTransportCable)te, x, y, z, scale);
 	}
 
@@ -63,8 +63,8 @@ public class TileEntityCableRender extends TileEntitySpecialRenderer implements 
 		GL11.glTranslated((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
 		this.bindTexture(texture3);
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		GL11.glRotatef(angle, 0.0F, 1.0F, 0.0F);
-		this.model3.render(0.0625F);
+		GL11.glRotatef(angle, 1.0F, 0.0F, 0.0F);
+		this.model2.render(0.0625F);
 		GL11.glPopMatrix();
 	}
 

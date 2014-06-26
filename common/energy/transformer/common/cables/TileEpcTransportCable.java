@@ -93,10 +93,10 @@ public class TileEpcTransportCable extends TileEntity implements IEPCCable
 		boolean flag1 = this.canConnectCableTo(this.worldObj, x, y, z + 1, true);
 		boolean flag2 = this.canConnectCableTo(this.worldObj, x - 1, y, z, true);
 		boolean flag3 = this.canConnectCableTo(this.worldObj, x + 1, y, z, true);
-		boolean flag4 = this.canConnectCableTo(this.worldObj, x + 1, y, z + 1, true);
-		boolean flag5 = this.canConnectCableTo(this.worldObj, x + 1, y, z - 1, true);
-		boolean flag6 = this.canConnectCableTo(this.worldObj, x - 1, y, z + 1, true);
-		boolean flag7 = this.canConnectCableTo(this.worldObj, x - 1, y, z - 1, true);
+		boolean flag4 = this.canConnectCableTo(this.worldObj, x, y - 1, z, true);
+		boolean flag5 = this.canConnectCableTo(this.worldObj, x, y + 1, z, true);
+		/*boolean flag6 = this.canConnectCableTo(this.worldObj, x - 1, y, z + 1, true);
+		boolean flag7 = this.canConnectCableTo(this.worldObj, x - 1, y, z - 1, true);*/
 		
 		if(flag)
 		{
@@ -130,7 +130,23 @@ public class TileEpcTransportCable extends TileEntity implements IEPCCable
 		{
 			render[3] = false;
 		}
-		if(flag4 && !(flag1 && flag3) && !flag1 && !flag3)
+		if(flag4)
+		{
+			render[4] = true;
+		}
+		else
+		{
+			render[4] = false;
+		}
+		if(flag5)
+		{
+			render[5] = true;
+		}
+		else
+		{
+			render[5] = false;
+		}
+		/*if(flag4 && !(flag1 && flag3) && !flag1 && !flag3)
 		{
 			render[4] = true;
 		}
@@ -161,7 +177,7 @@ public class TileEpcTransportCable extends TileEntity implements IEPCCable
 		else
 		{
 			render[7] = false;
-		}
+		}*/
 		
 		for(int i = 0; i < 6; i++)
 		{
