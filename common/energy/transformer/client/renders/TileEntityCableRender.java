@@ -41,15 +41,15 @@ public class TileEntityCableRender extends TileEntitySpecialRenderer implements 
 		if(tileEntity.render[0])
 			this.renderTileEpcTransportCableDirectionalAt((TileEpcTransportCable)te, x, y, z, scale, 0F);
 		if(tileEntity.render[1])
-			this.renderTileEpcTransportCableDirectionalAt((TileEpcTransportCable)te, x, y, z, scale, 0F);
+			this.renderTileEpcTransportCableDirectionalAt((TileEpcTransportCable)te, x, y, z, scale, 180F);
 		if(tileEntity.render[2])
-			this.renderTileEpcTransportCableDirectionalAt((TileEpcTransportCable)te, x, y, z, scale, 90F);
+			this.renderTileEpcTransportCableDirectionalAt((TileEpcTransportCable)te, x, y, z, scale, 270F);
 		if(tileEntity.render[3])
 			this.renderTileEpcTransportCableDirectionalAt((TileEpcTransportCable)te, x, y, z, scale, 90F);
 		if(tileEntity.render[4])
-			this.renderTileEpcTransportCableRotateAt((TileEpcTransportCable)te, x, y, z, scale, 0F);
+			this.renderTileEpcTransportCableDirectionalAxeNegYAt((TileEpcTransportCable)te, x, y, z, scale);
 		if(tileEntity.render[5])
-			this.renderTileEpcTransportCableRotateAt((TileEpcTransportCable)te, x, y, z, scale, 0F);
+			this.renderTileEpcTransportCableDirectionalAxePosYAt((TileEpcTransportCable)te, x, y, z, scale);
 		/*if(tileEntity.render[6])
 			//this.renderTileEpcTransportCableRotateAt((TileEpcTransportCable)te, x, y, z, scale, 0F);
 		if(tileEntity.render[7])
@@ -87,6 +87,31 @@ public class TileEntityCableRender extends TileEntitySpecialRenderer implements 
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
 		GL11.glRotatef(0F, 0.0F, 1.0F, 1.0F);
 		this.model.render(0.0625F);
+		GL11.glPopMatrix();
+	}
+	
+	private void renderTileEpcTransportCableDirectionalAxeNegYAt(TileEpcTransportCable te, double x, double y, double z, float scale)
+	{
+		GL11.glPushMatrix();
+		GL11.glTranslated((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
+		this.bindTexture(texture2);
+		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+		GL11.glRotatef(90F, 1.0F, 0.0F, 0.0F);
+		GL11.glScalef(1.0F, 1.0F, 1.05F);
+		GL11.glTranslatef(0.0F, -1.313F, -1.24F);
+		this.model2.render(0.0625F);
+		GL11.glPopMatrix();
+	}
+	
+	private void renderTileEpcTransportCableDirectionalAxePosYAt(TileEpcTransportCable te, double x, double y, double z, float scale)
+	{
+		GL11.glPushMatrix();
+		GL11.glTranslated((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
+		this.bindTexture(texture2);
+		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+		GL11.glRotatef(90F, 1.0F, 0.0F, 0.0F);
+		GL11.glTranslatef(0.0F, -1.313F, -0.69F);
+		this.model2.render(0.0625F);
 		GL11.glPopMatrix();
 	}
 }
