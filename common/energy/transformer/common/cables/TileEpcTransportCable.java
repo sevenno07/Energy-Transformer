@@ -13,7 +13,9 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import energy.transformer.common.EnergyTransformer;
+import energy.transformer.common.blocks.EnergyBlockList;
 import energy.transformer.common.epc.IEPCCable;
+import energy.transformer.common.epc.IEPCContainer;
 import energy.transformer.common.utils.CableHelper;
 import energy.transformer.common.utils.DirectionHelper;
 
@@ -146,38 +148,6 @@ public class TileEpcTransportCable extends TileEntity implements IEPCCable
 		{
 			render[5] = false;
 		}
-		/*if(flag4 && !(flag1 && flag3) && !flag1 && !flag3)
-		{
-			render[4] = true;
-		}
-		else
-		{
-			render[4] = false;
-		}
-		if(flag5 && !(flag && flag3) && !flag && !flag3)
-		{
-			render[5] = true;
-		}
-		else
-		{
-			render[5] = false;
-		}
-		if(flag6 && !(flag1 && flag2) && !flag1 && !flag2)
-		{
-			render[6] = true;
-		}
-		else
-		{
-			render[6] = false;
-		}
-		if(flag7 && !(flag && flag2) && !flag && !flag2)
-		{
-			render[7] = true;
-		}
-		else
-		{
-			render[7] = false;
-		}*/
 		
 		for(int i = 0; i < 6; i++)
 		{
@@ -234,11 +204,12 @@ public class TileEpcTransportCable extends TileEntity implements IEPCCable
 	private boolean canConnectCableTo(World world, int x, int y, int z, boolean b)
 	{
 		Block block = world.getBlock(x, y, z);
-		if(block != this.getBlockType() && b && block instanceof IEPCCable)
+		TileEntity te = world.getTileEntity(x, y, z);
+		if(block != null && (block == EnergyBlockList.epcCable || block  == EnergyBlockList.epcInputCable || block == EnergyBlockList.epcOutputCable))
 		{
-			return block != null && block.getMaterial().isOpaque() && block.renderAsNormalBlock() ? block.getMaterial() != Material.gourd : false;
+			return true;
 		}
-		else if(block == this.getBlockType())
+		else if((block != null && (block  == EnergyBlockList.epcInputCable || block == EnergyBlockList.epcOutputCable)) && te instanceof IEPCContainer)
 		{
 			return true;
 		}
