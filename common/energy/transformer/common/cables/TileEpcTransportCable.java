@@ -35,7 +35,7 @@ public class TileEpcTransportCable extends TileEntity implements IEPCCable
 	protected int epcContained = 0;
 	protected int[] nextEPC = new int[6];
 	protected int[] nextEPCQuery = new int[6];
-	public boolean[] render = new boolean[] {false, false, false, false, false, false, false, false};
+	public boolean[] render = new boolean[6];
 
 	@Override
 	public void writeToNBT(NBTTagCompound nbt)
@@ -97,8 +97,6 @@ public class TileEpcTransportCable extends TileEntity implements IEPCCable
 		boolean flag3 = this.canConnectCableTo(this.worldObj, x + 1, y, z, true);
 		boolean flag4 = this.canConnectCableTo(this.worldObj, x, y - 1, z, true);
 		boolean flag5 = this.canConnectCableTo(this.worldObj, x, y + 1, z, true);
-		/*boolean flag6 = this.canConnectCableTo(this.worldObj, x - 1, y, z + 1, true);
-		boolean flag7 = this.canConnectCableTo(this.worldObj, x - 1, y, z - 1, true);*/
 		
 		if(flag)
 		{
