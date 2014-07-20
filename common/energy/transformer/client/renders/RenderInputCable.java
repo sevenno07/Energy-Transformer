@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.util.ForgeDirection;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
-import energy.transformer.common.utils.CableHelper;
+import energy.transformer.api.utils.CableHelper;
 import energy.transformer.proxy.EnergyClientProxy;
 
 public class RenderInputCable implements ISimpleBlockRenderingHandler

@@ -1,4 +1,4 @@
-package energy.transformer.common.epc;
+package energy.transformer.api.epc;
 
 /**
  * This interface is quite special. Anything that is upgradable implements this.
