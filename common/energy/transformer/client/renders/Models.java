@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.util.ForgeDirection;
-import energy.transformer.common.EnergyTransformer;
+import static energy.transformer.common.EnergyTransformer.LOGGER;
 
 public final class Models
 {
@@ -101,7 +101,7 @@ public final class Models
 			break;
 		case UNKNOWN:
 		{
-			EnergyTransformer.LOGGER.error("Looks like a mod is trying to troll Energy Transformer's model! This is an important programming bug!");
+			LOGGER.error("Looks like a mod is trying to troll Energy Transformer's model! This is an important programming bug!");
 		}
 			break;
 		}
@@ -179,7 +179,7 @@ public final class Models
 			break;
 		case UNKNOWN:
 		{
-			EnergyTransformer.LOGGER.error("Looks like a mod is trying to troll Energy Transformer's model! This is an important programming bug!");
+			LOGGER.error("Looks like a mod is trying to troll Energy Transformer's model! This is an important programming bug!");
 		}
 			break;
 		}
@@ -256,9 +256,98 @@ public final class Models
 		}
 			break;
 		case UNKNOWN:
-		{
-			EnergyTransformer.LOGGER.error("Looks like a mod is trying to troll Energy Transformer's model! This is an important programming bug!");
+			LOGGER.error("Looks like a mod is trying to troll Energy Transformer's model! This is an important programming bug!");
+			break;
 		}
+	}
+
+	public static void setCableLargeBaseHitbox(Block cable)
+	{
+		cable.setBlockBounds(linkThicknessA, linkThicknessA, linkThicknessA, linkThicknessB, linkThicknessB, linkThicknessB);
+	}
+
+	public static void setCableRegularBaseHitbox(Block cable)
+	{
+		cable.setBlockBounds(thicknessA, thicknessA, thicknessA, thicknessB, thicknessB, thicknessB);
+	}
+
+	public static void setCableSideRegularHitbox(Block cable, ForgeDirection direction)
+	{
+		switch(direction)
+		{
+		case DOWN:
+			cable.setBlockBounds(thicknessA, bottom, thicknessB, thicknessB, thicknessA, thicknessA);
+			break;
+		case EAST:
+			cable.setBlockBounds(thicknessB, thicknessA, thicknessA, top, thicknessB, thicknessB);
+			break;
+		case NORTH:
+			cable.setBlockBounds(thicknessB, thicknessA, thicknessA, thicknessA, thicknessB, bottom);
+			break;
+		case SOUTH:
+			cable.setBlockBounds(thicknessA, thicknessA, thicknessB, thicknessB, thicknessB, top);
+			break;
+		case UP:
+			cable.setBlockBounds(thicknessA, thicknessB, thicknessA, thicknessB, top, thicknessB);
+			break;
+		case WEST:
+			cable.setBlockBounds(thicknessA, thicknessA, thicknessB, bottom, thicknessB, thicknessA);
+			break;
+		default:
+			break;
+		}
+	}
+
+	public static void setCableSideShortHitbox(Block cable, ForgeDirection direction)
+	{
+		switch(direction)
+		{
+		case DOWN:
+			cable.setBlockBounds(thicknessB, thicknessA, thicknessA, thicknessA, containerLinkSizeA, thicknessB);
+			break;
+		case EAST:
+			cable.setBlockBounds(thicknessB, thicknessA, thicknessA, containerLinkSizeB, thicknessB, thicknessB);
+			break;
+		case NORTH:
+			cable.setBlockBounds(thicknessB, thicknessA, thicknessA, thicknessA, thicknessB, containerLinkSizeA);
+			break;
+		case SOUTH:
+			cable.setBlockBounds(thicknessA, thicknessA, thicknessB, thicknessB, thicknessB, containerLinkSizeB);
+			break;
+		case UP:
+			cable.setBlockBounds(thicknessA, thicknessB, thicknessA, thicknessB, containerLinkSizeB, thicknessB);
+			break;
+		case WEST:
+			cable.setBlockBounds(thicknessA, thicknessA, thicknessB, containerLinkSizeA, thicknessB, thicknessA);
+			break;
+		default:
+			break;
+		}
+	}
+
+	public static void setCableSidePlugHitbox(Block cable, ForgeDirection direction)
+	{
+		switch(direction)
+		{
+		case DOWN:
+			cable.setBlockBounds(linkThicknessB, containerLinkSizeA, linkThicknessA, linkThicknessA, bottom, linkThicknessB);
+			break;
+		case EAST:
+			cable.setBlockBounds(containerLinkSizeB, linkThicknessA, linkThicknessA, top, linkThicknessB, linkThicknessB);
+			break;
+		case NORTH:
+			cable.setBlockBounds(linkThicknessB, linkThicknessA, containerLinkSizeA, linkThicknessA, linkThicknessB, bottom);
+			break;
+		case SOUTH:
+			cable.setBlockBounds(linkThicknessB, linkThicknessB, top, linkThicknessA, linkThicknessA, containerLinkSizeB);
+			break;
+		case UP:
+			cable.setBlockBounds(linkThicknessB, top, linkThicknessB, linkThicknessA, containerLinkSizeB, linkThicknessA);
+			break;
+		case WEST:
+			cable.setBlockBounds(containerLinkSizeA, linkThicknessA, linkThicknessB, bottom, linkThicknessB, linkThicknessA);
+			break;
+		default:
 			break;
 		}
 	}

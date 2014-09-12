@@ -225,10 +225,9 @@ public class TileEntityPixelCondenser extends TileEntity implements IEPCContaine
 	public boolean hasUpgrade(EnumActionType type)
 	{
 		ItemStack stackInSlot = this.getStackInSlot(40);
-		Item stackItem = stackInSlot.getItem();
-		if(this.getStackInSlot(40).getItem() instanceof IUpgrade)
+		if(this.getStackInSlot(40) != null && this.getStackInSlot(40).getItem() instanceof IUpgrade)
 		{
-			return ((IUpgrade)stackItem).getPassiveAction(stackInSlot).getType() == type;
+			return ((IUpgrade)this.getStackInSlot(40).getItem()).getPassiveAction(stackInSlot).getType() == type;
 		}
 		return false;
 	}

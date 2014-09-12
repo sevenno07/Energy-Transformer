@@ -14,6 +14,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import energy.transformer.api.epc.EnergyEPCValuesList;
 import energy.transformer.common.achievements.EnergyAchievementList;
 import energy.transformer.common.blocks.EnergyBlockList;
@@ -44,6 +45,11 @@ public class EnergyTransformer
 	 */
 	public static final String MODID = "Energy_Transformer";
 
+	/**
+	 * The network
+	 */
+	public static final SimpleNetworkWrapper ENERGY_NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(MODID.toLowerCase());
+	
 	/**
 	 * Proxy
 	 */
